@@ -1,0 +1,76 @@
+/* Site A — Project Goals. Also link projects.css and boq.css. */
+
+.goal-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; margin-bottom: 16px; }
+.goal-top__side { display: flex; flex-direction: column; align-items: flex-end; gap: 16px; }
+
+.goal-target, .goal-stat, .goal-card {
+  background: var(--cai-white);
+  border: 1.5px solid var(--cai-black);
+  border-radius: 16px;
+}
+
+.goal-target { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; margin: 0; padding: 12px 20px 16px; }
+.goal-target__title { flex-basis: 100%; margin: 0; font-size: var(--cai-heading-3); font-weight: bold; }
+.goal-target label { display: flex; align-items: center; gap: 10px; font-size: var(--cai-body-text); font-weight: bold; color: #666; }
+.goal-target .boq-input { width: 140px; }
+
+.goal-chip { display: inline-block; background: #e5eefc; border-radius: 4px; padding: 3px 8px; font-size: 13px; font-weight: bold; }
+.goal-chip--bad { background: var(--cai-light-red); color: var(--cai-red); }
+
+.goal-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: 16px; }
+.goal-stat { padding: 12px 18px; }
+.goal-stat__label { margin: 0; font-size: var(--cai-heading-3); font-weight: bold; }
+.goal-stat__value { margin: 8px 0 0; text-align: center; font-size: 28px; font-weight: bold; line-height: 40px; }
+.goal-stat .cai-badge { font-size: var(--cai-heading-2); border-radius: 8px; border-color: transparent; }
+
+.goal-card { margin-bottom: 18px; padding: 0 18px; }
+
+.goal-card__head {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 8px 24px;
+  width: 100%; padding: 14px 0; background: none; border: none;
+  font: bold var(--cai-heading-3) var(--cai-font-body); color: var(--cai-black);
+  text-align: left; cursor: pointer;
+}
+.goal-card__head:focus-visible { outline: 2px solid var(--cai-yellow); }
+.goal-card__name { font-size: 20px; min-width: 150px; }
+.goal-card__metric { display: flex; align-items: center; gap: 8px; }
+.goal-card__metric--first { margin-left: auto; }
+.goal-card__toggle { font-size: var(--cai-heading-2); width: 20px; text-align: center; }
+
+.goal-card__fields { display: flex; flex-wrap: wrap; gap: 12px 18px; margin-bottom: 14px; }
+.goal-field { display: flex; align-items: center; gap: 8px; font-size: var(--cai-body-text); font-weight: bold; }
+.goal-field .boq-input { width: 140px; }
+.goal-field input[type="number"] { width: 70px; }
+
+.goal-scroll { overflow-x: auto; }
+.goal-table { width: 100%; min-width: 700px; border-collapse: collapse; table-layout: fixed; }
+.goal-table th { text-align: left; font-size: var(--cai-body-text); padding: 6px 8px; }
+.goal-table--tasks th { border-bottom: 1px solid var(--cai-light-gray); }
+.goal-table td { padding: 5px 8px; }
+.goal-table .boq-input { text-align: left; }
+.goal-table .cai-btn { padding: 5px 10px; }
+
+.goal-table--tasks th:nth-child(1) { width: 60px; }
+.goal-table--tasks th:nth-child(3) { width: 110px; }
+.goal-table--tasks th:nth-child(4) { width: 170px; }
+.goal-table--tasks th:nth-child(5) { width: 100px; }
+.goal-table--materials th:nth-child(2),
+.goal-table--materials th:nth-child(3) { width: 150px; }
+.goal-table--materials th:nth-child(4) { width: 100px; }
+
+.goal-check { width: 22px; height: 22px; margin: 0 6px; accent-color: var(--cai-black); cursor: pointer; }
+.goal-pct { display: flex; align-items: center; gap: 4px; font-size: var(--cai-body-text); font-weight: bold; }
+
+.goal-warning { margin: 4px 8px; font-size: var(--cai-body-text); color: var(--cai-red); }
+.goal-warning:empty { display: none; }
+
+.goal-card__subtitle { margin: 18px 0 6px; font-size: 18px; }
+.goal-card__subtitle span { color: var(--cai-red); }
+
+.goal-card__actions { display: flex; flex-wrap: wrap; gap: 12px; padding: 14px 0 18px; }
+.cai-btn.goal-danger, .cai-btn.goal-danger:hover { background: var(--cai-light-red); border-color: var(--cai-black); }
+.cai-btn.goal-danger:hover { border-color: var(--cai-red); }
+
+@media (max-width: 900px) {
+  .goal-stats { grid-template-columns: repeat(2, 1fr); }
+}

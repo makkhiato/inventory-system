@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Site A Cost Variance — Carl's Angels Inventory Management</title>
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/projects.css">
+<link rel="stylesheet" href="../css/boq.css">
+<link rel="stylesheet" href="../css/variance.css">
+</head>
+<body>
+
+<div class="cai-app">
+  <div id="cai-topbar-slot"></div>
+
+  <div class="cai-body">
+    <div id="cai-sidebar-slot"></div>
+
+    <main class="cai-content">
+
+      <div class="proj-topline">
+        <nav class="proj-breadcrumb" aria-label="Breadcrumb">
+          <a href="owner_projects.html">Projects</a>
+          <span aria-hidden="true"> &gt; </span>
+          <a href="owner_site-a.html">Site A</a>
+          <span aria-hidden="true"> &gt; </span>
+          <span class="proj-breadcrumb__current" aria-current="page">Cost Variance</span>
+        </nav>
+      </div>
+
+      <div class="proj-tabs" role="group" aria-label="Site sections">
+        <a class="proj-tabs__tab" href="owner_site-a.html">BOQ</a>
+        <a class="proj-tabs__tab" href="owner_site-a-bom.html">BOM</a>
+        <a class="proj-tabs__tab" href="owner_site-a-goals.html">Project Goals</a>
+        <a class="proj-tabs__tab" href="owner_site-a-usage.html">Usage vs Progress</a>
+        <a class="proj-tabs__tab proj-tabs__tab--active" href="owner_site-a-variance.html" aria-current="page">Cost Variance</a>
+        <button class="proj-tabs__tab" type="button" disabled title="Not built yet">Billing Support</button>
+        <button class="proj-tabs__tab" type="button" disabled title="Not built yet">Change Orders</button>
+        <button class="proj-tabs__tab" type="button" disabled title="Not built yet">Project Closeout</button>
+      </div>
+
+      <div class="proj-header">
+        <h1 class="proj-title">Cost Variance</h1>
+      </div>
+
+      <div class="var-stats">
+        <div class="var-stat"><p class="var-stat__label">Progress</p><p class="var-stat__value" id="var-progress"></p></div>
+        <div class="var-stat"><p class="var-stat__label">Expected cost by now</p><p class="var-stat__value" id="var-expected"></p></div>
+        <div class="var-stat"><p class="var-stat__label">Actual cost</p><p class="var-stat__value" id="var-actual"></p></div>
+        <div class="var-stat"><p class="var-stat__label">Net variance</p><p class="var-stat__value" id="var-net"></p></div>
+      </div>
+
+      <section class="proj-card" aria-labelledby="var-title">
+        <h2 class="var-title" id="var-title">Per material</h2>
+        <div class="proj-table-scroll">
+          <table class="var-table">
+            <thead>
+              <tr>
+                <th scope="col">Material</th>
+                <th scope="col">Used qty</th>
+                <th scope="col">Expected qty</th>
+                <th scope="col">Unit cost paid</th>
+                <th scope="col">Actual cost</th>
+                <th scope="col">Expected cost</th>
+                <th scope="col">Difference</th>
+                <th scope="col">Result</th>
+              </tr>
+            </thead>
+            <tbody id="var-rows"></tbody>
+            <tfoot>
+              <tr>
+                <th scope="row" colspan="4">Total:</th>
+                <td id="var-total-actual"></td>
+                <td id="var-total-expected"></td>
+                <td id="var-total-diff"></td>
+                <td id="var-total-result"></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<script>
+// Hardcoded sample data for Site A (prototype only). qty and used match
+// owner_site-a-bom.html. planned = budgeted unit cost; paid = unit cost paid.
+window.CAI_VARIANCE = {
+  progress: 45,
+  materials: [
+    { name: 'Cement, 40 kg',      unit: 'sack', qty: 600,  used: 288, planned: 265,    paid: 275 },
+    { name: 'Hollow blocks 4 in', unit: 'pc',   qty: 4200, used: 882, planned: 14,     paid: 14 },
+    { name: 'Rebar 16 mm',        unit: 'pc',   qty: 900,  used: 378, planned: 690,    paid: 705 },
+    { name: 'Sand',               unit: 'cu.m', qty: 60,   used: 28,  planned: 1300,   paid: 1350 },
+    { name: 'Gravel',             unit: 'cu.m', qty: 45,   used: 20,  planned: 1200,   paid: 1200 },
+    { name: 'Formworks',          unit: 'lot',  qty: 1,    used: 0,   planned: 120000, paid: 120000 }
+  ]
+};
+</script>
+<script src="../js/layout.js"></script>
+<script src="../js/variance.js"></script>
+</body>
+</html>

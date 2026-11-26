@@ -1,0 +1,27 @@
+/* Site A — Usage vs Progress. Also link projects.css, boq.css and goals.css
+   (stat cards and collapsible cards are shared with Project Goals). */
+
+.use-header { display: flex; align-items: center; flex-wrap: wrap; gap: 16px 120px; margin-bottom: 24px; }
+.use-project { display: flex; align-items: center; gap: 12px; font-size: var(--cai-heading-3); font-weight: bold; color: #666; }
+
+.use-sub { border-top: 1px solid var(--cai-black); padding: 10px 0 14px; }
+.use-sub__head { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 14px; }
+.use-sub__name { margin: 0 auto 0 12px; font-size: var(--cai-heading-3); }
+
+.use-pill {
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 1.5px solid var(--cai-black); border-radius: 999px;
+  padding: 5px 16px; font-size: var(--cai-body-text); font-weight: normal;
+}
+
+.use-table { width: 100%; min-width: 700px; border-collapse: collapse; table-layout: fixed; margin-top: 10px; }
+.use-table th, .use-table td { text-align: center; padding: 6px 8px; font-size: 13px; }
+.use-table th { border-bottom: 1px solid var(--cai-light-gray); }
+
+.use-usage { display: flex; align-items: center; gap: 10px; }
+.use-usage .cai-progress { flex: 1; background: #ad7d1f; }
+.use-usage .cai-progress__fill { background: #f8e07a; border-radius: 999px 0 0 999px; }
+.use-usage span { width: 40px; text-align: right; }
+.use-usage--over .cai-progress__fill { background: var(--cai-red); }
+
+.use-empty { margin: 8px 12px 0; font-size: var(--cai-body-text); color: #666; }

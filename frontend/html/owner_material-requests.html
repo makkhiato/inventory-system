@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Material Requests — Carl's Angels Inventory Management</title>
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/projects.css">
+<link rel="stylesheet" href="../css/material-requests.css">
+</head>
+<body>
+
+<div class="cai-app">
+  <div id="cai-topbar-slot"></div>
+
+  <div class="cai-body">
+    <div id="cai-sidebar-slot"></div>
+
+    <main class="cai-content">
+
+      <div class="proj-topline">
+        <nav class="proj-breadcrumb" aria-label="Breadcrumb">
+          <span>Procurement</span>
+          <span aria-hidden="true"> &gt; </span>
+          <span class="proj-breadcrumb__current" aria-current="page">Material Requests</span>
+        </nav>
+      </div>
+
+      <div class="mr-header">
+        <h1 class="proj-title">Material Requests</h1>
+      </div>
+
+      <section class="proj-card" aria-label="Request list">
+        <div class="proj-table-scroll">
+          <table class="proj-table mr-table">
+            <thead>
+              <tr>
+                <th>Request</th><th>Site</th><th>Date &amp; Time</th>
+                <th><span class="proj-sr-only">Actions</span></th>
+              </tr>
+            </thead>
+            <tbody id="mr-rows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <dialog class="mr-dialog" id="mr-dialog" aria-labelledby="mr-dialog-title">
+        <div class="mr-dialog__head">
+          <div>
+            <h2 id="mr-dialog-title"></h2>
+            <span class="cai-badge" id="mr-dialog-status"></span>
+          </div>
+          <button class="mr-dialog__close" type="button" id="mr-close" aria-label="Close">×</button>
+        </div>
+        <dl class="mr-details" id="mr-details"></dl>
+        <table class="mr-items">
+          <thead><tr><th>Material</th><th>Quantity</th><th>Unit</th></tr></thead>
+          <tbody id="mr-items"></tbody>
+        </table>
+        <h3>Purpose</h3>
+        <p id="mr-purpose"></p>
+        <div class="mr-dialog__actions" id="mr-actions">
+          <button class="cai-btn cai-btn--outline mr-reject" type="button" data-decision="Rejected">Reject</button>
+          <button class="cai-btn cai-btn--primary" type="button" data-decision="Approved">Approve request</button>
+        </div>
+      </dialog>
+
+    </main>
+  </div>
+</div>
+
+<script>
+// Hardcoded sample data for Site A (prototype only). Newest request first.
+window.CAI_REQUESTS = [
+  { id: 'Material Request 3', site: 'Site A', by: 'Site Engineer', date: '11/15/2026, 8:30 AM', needed: '11/18/2026',
+    priority: 'Urgent', status: 'Pending', purpose: 'Materials for column and beam works.',
+    items: [['Cement, 40 kg', 80, 'sack'], ['Rebar 16 mm', 120, 'pc'], ['Sand', 8, 'cu.m'], ['Gravel', 10, 'cu.m']] },
+  { id: 'Material Request 2', site: 'Site A', by: 'Foreman', date: '11/13/2026, 2:15 PM', needed: '11/20/2026',
+    priority: 'Normal', status: 'Pending', purpose: 'Materials for hollow block wall installation.',
+    items: [['Hollow blocks 4 in', 800, 'pc'], ['Cement, 40 kg', 40, 'sack'], ['Sand', 4, 'cu.m']] },
+  { id: 'Material Request 1', site: 'Site A', by: 'Foreman', date: '11/02/2026, 9:05 AM', needed: '11/05/2026',
+    priority: 'Normal', status: 'Approved', purpose: 'Materials for footing concrete.',
+    items: [['Cement, 40 kg', 100, 'sack'], ['Sand', 12, 'cu.m'], ['Gravel', 9, 'cu.m']] }
+];
+</script>
+<script src="../js/layout.js"></script>
+<script src="../js/material-requests.js"></script>
+</body>
+</html>

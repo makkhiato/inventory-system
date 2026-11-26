@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supplier Orders — Carl's Angels Inventory Management</title>
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/projects.css">
+<link rel="stylesheet" href="../css/boq.css">
+<link rel="stylesheet" href="../css/supplier-orders.css">
+</head>
+<body>
+
+<div class="cai-app">
+  <div id="cai-topbar-slot"></div>
+
+  <div class="cai-body">
+    <div id="cai-sidebar-slot"></div>
+
+    <main class="cai-content">
+
+      <div class="proj-topline">
+        <nav class="proj-breadcrumb" aria-label="Breadcrumb">
+          <span>Procurement</span>
+          <span aria-hidden="true"> &gt; </span>
+          <span class="proj-breadcrumb__current" aria-current="page">Supplier Orders</span>
+        </nav>
+      </div>
+
+      <div class="proj-header">
+        <h1 class="proj-title">Supplier Orders</h1>
+      </div>
+
+      <!-- ---- Available to Order ---- -->
+      <section class="proj-card" aria-labelledby="ato-title">
+        <div class="so-card-head">
+          <h2 class="proj-card__title" id="ato-title">Available to Order</h2>
+          <label class="so-filter">
+            <span class="so-filter__label">Project</span>
+            <select class="boq-input boq-select so-filter__control" id="so-project-filter" aria-label="Filter by project"></select>
+          </label>
+        </div>
+
+        <div class="proj-table-scroll">
+          <table class="proj-table so-ato-table">
+            <thead>
+              <tr>
+                <th>Material Name</th>
+                <th>Project</th>
+                <th>Supplier</th>
+                <th>Quantity Requested</th>
+                <th>Quantity to Order</th>
+                <th><span class="proj-sr-only">Include in order</span></th>
+              </tr>
+            </thead>
+            <tbody id="so-ato-rows"></tbody>
+          </table>
+        </div>
+
+        <div class="so-ato-footer">
+          <p class="so-feedback" id="so-feedback" role="status"></p>
+          <button class="cai-btn cai-btn--outline" type="button" id="so-generate">Generate Supplier Order Form</button>
+        </div>
+      </section>
+
+      <!-- ---- Order Status ---- -->
+      <section class="proj-card" aria-labelledby="os-title">
+        <h2 class="proj-card__title so-card__title--caps" id="os-title">Order Status</h2>
+        <div class="proj-table-scroll">
+          <table class="proj-table so-order-table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Supplier</th>
+                <th>Location/project</th>
+                <th>Date Ordered</th>
+                <th>Date Arrived</th>
+                <th>Status</th>
+                <th><span class="proj-sr-only">Actions</span></th>
+              </tr>
+            </thead>
+            <tbody id="so-order-rows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ---- Supplier Directory ---- -->
+      <section class="proj-card" aria-labelledby="sd-title">
+        <div class="so-card-head">
+          <h2 class="proj-card__title so-card__title--caps" id="sd-title">Supplier Directory</h2>
+          <button class="cai-btn cai-btn--primary" type="button" id="so-add-supplier">+ Add Supplier</button>
+        </div>
+        <div class="proj-table-scroll">
+          <table class="proj-table so-supplier-table">
+            <thead>
+              <tr>
+                <th>Supplier Name</th>
+                <th>Supplier Type</th>
+                <th>Address</th>
+                <th>Contact Details</th>
+                <th><span class="proj-sr-only">Actions</span></th>
+              </tr>
+            </thead>
+            <tbody id="so-supplier-rows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ---- Order details dialog ---- -->
+      <dialog class="so-dialog" id="so-order-dialog" aria-labelledby="so-order-dialog-title">
+        <div class="so-dialog__head">
+          <div>
+            <h2 id="so-order-dialog-title"></h2>
+            <span class="cai-badge" id="so-order-dialog-status"></span>
+          </div>
+          <button class="so-dialog__close" type="button" id="so-order-close" aria-label="Close">×</button>
+        </div>
+        <dl class="so-details" id="so-order-details"></dl>
+        <table class="so-items">
+          <thead><tr><th>Material</th><th>Quantity to Order</th><th>Unit</th></tr></thead>
+          <tbody id="so-order-items"></tbody>
+        </table>
+      </dialog>
+
+      <!-- ---- Supplier edit dialog ---- -->
+      <dialog class="so-dialog" id="so-supplier-dialog" aria-labelledby="so-supplier-dialog-title">
+        <div class="so-dialog__head">
+          <h2 id="so-supplier-dialog-title">Edit Supplier</h2>
+          <button class="so-dialog__close" type="button" id="so-supplier-close" aria-label="Close">×</button>
+        </div>
+        <form class="so-form" id="so-supplier-form">
+          <label>Supplier Name<input class="boq-input boq-input--text" type="text" id="so-field-name" required></label>
+          <label>Supplier Type<input class="boq-input boq-input--text" type="text" id="so-field-type" required></label>
+          <label>Address<input class="boq-input boq-input--text" type="text" id="so-field-address" required></label>
+          <label>Contact Details<input class="boq-input boq-input--text" type="text" id="so-field-contact" required></label>
+          <div class="so-form__actions">
+            <button class="cai-btn cai-btn--outline" type="button" id="so-supplier-cancel">Cancel</button>
+            <button class="cai-btn cai-btn--primary" type="submit">Save</button>
+          </div>
+        </form>
+      </dialog>
+
+    </main>
+  </div>
+</div>
+
+<script>
+// Hardcoded sample data (prototype only). Nothing is persisted.
+window.CAI_SUPPLIER_ORDERS = {
+  projects: ['Office Renovation - Makati', 'Site B - Manila', 'Site C - Pasay'],
+
+  availableToOrder: [
+    { material: 'Cement, 40 kg', project: 'Office Renovation - Makati', requestedQty: 40, unit: 'sack', orderQty: 20, supplier: '' },
+    { material: 'Rebar 16 mm', project: 'Office Renovation - Makati', requestedQty: 120, unit: 'pc', orderQty: 60, supplier: '' },
+    { material: 'Hollow blocks 4 in', project: 'Site B - Manila', requestedQty: 800, unit: 'pc', orderQty: 400, supplier: '' },
+    { material: 'Plywood sheets', project: 'Site C - Pasay', requestedQty: 50, unit: 'pc', orderQty: 25, supplier: '' }
+  ],
+
+  // Newest order first.
+  orders: [
+    { id: 1, supplier: '123 Hardware', project: 'Office Renovation - Makati', dateOrdered: '11/25/2026', dateArrived: '',
+      status: 'Not Received', items: [['Cement, 40 kg', 20, 'sack']] }
+  ],
+
+  suppliers: [
+    { name: '123 Hardware', type: 'Cement', address: '67 St. Guadalupe', contact: '0992 100 9301' },
+    { name: 'Metro Steel Supply', type: 'Rebar & Steel', address: '14 Industrial Ave, Makati', contact: '0917 220 4410' },
+    { name: 'Pasay Lumber Co.', type: 'Plywood & Lumber', address: '9 Taft Ext, Pasay', contact: '0928 775 1182' }
+  ]
+};
+</script>
+<script src="../js/layout.js"></script>
+<script src="../js/supplier-orders.js"></script>
+</body>
+</html>

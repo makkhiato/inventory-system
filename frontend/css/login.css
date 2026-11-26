@@ -1,0 +1,77 @@
+/* Login page. Standalone: it has no topbar or sidebar.
+   Relies on the color tokens in layout.css. */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  background: radial-gradient(ellipse at center, #8f6811 0%, 50%, var(--cai-black) 100%) fixed var(--cai-black);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 16px 26px 22px;
+  background: var(--cai-yellow);
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+  text-align: center;
+}
+
+.login-logo { display: block; width: 260px; max-width: 100%; height: auto; margin: 0 auto; }
+
+.login-title {
+  max-width: 300px;
+  margin: 0 auto 12px;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 20px;
+  line-height: 1.35;
+  font-variant: small-caps;
+  color: var(--cai-black);
+}
+
+#login-form { display: flex; flex-direction: column; text-align: left; }
+#login-form label { margin: 6px 0; font-size: 11px; color: var(--cai-black); }
+
+#login-form input {
+  width: 100%;
+  padding: 12px 14px;
+  font: 15px Arial, Helvetica, sans-serif;
+  background: #fff;
+  border: 2px solid transparent;
+  border-radius: 10px;
+}
+
+#login-form input::placeholder { color: #b5b5b5; }
+
+#login-form button {
+  align-self: center;
+  min-width: 140px;
+  margin-top: 24px;
+  padding: 12px 24px;
+  font: bold 15px Arial, Helvetica, sans-serif;
+  color: var(--cai-yellow);
+  background: #100e0a;
+  border: 2px solid #100e0a;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#login-form button:hover { background: #fff; color: var(--cai-black); }
+#login-form input:focus-visible,
+#login-form button:focus-visible { outline: 2px solid var(--cai-black); outline-offset: 2px; }
+
+#login-form .login-error {
+  margin: 14px 0 0;
+  font-size: 13px;
+  font-weight: bold;
+  color: #b3261e;
+  text-align: center;
+}
+#login-form .login-error[hidden] { display: none; }

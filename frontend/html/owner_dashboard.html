@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard — Carl's Angels Inventory Management</title>
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+
+<div class="cai-app">
+  <div id="cai-topbar-slot"></div>
+
+  <div class="cai-body">
+    <div id="cai-sidebar-slot"></div>
+
+    <main class="cai-content">
+
+      <div class="dash-welcome">
+        <p class="dash-welcome__title">Welcome back, Carl Dela Cruz</p>
+        <h1 class="dash-section-title">All notifications</h1>
+      </div>
+
+      <div class="dash-row">
+        <div class="dash-card dash-card--notifications">
+          <div class="dash-table-scroll">
+            <table class="dash-table">
+              <thead>
+                <tr><th>site</th><th>material</th><th>short description</th><th></th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Site A</td>
+                  <td>Cement bags</td>
+                  <td>Running low on stock</td>
+                  <td><button class="cai-btn cai-btn--outline" type="button">view low-stock</button></td>
+                </tr>
+                <tr>
+                  <td>Site B</td>
+                  <td>Rebar #10</td>
+                  <td>New material request submitted</td>
+                  <td><button class="cai-btn cai-btn--outline" type="button">view material request</button></td>
+                </tr>
+                <tr>
+                  <td>Site C</td>
+                  <td>Plywood sheets</td>
+                  <td>Below reorder threshold</td>
+                  <td><button class="cai-btn cai-btn--outline" type="button">view low-stock</button></td>
+                </tr>
+                <tr>
+                  <td>Site A</td>
+                  <td>Steel pipes</td>
+                  <td>Critically low stock</td>
+                  <td><button class="cai-btn cai-btn--outline" type="button">view low-stock</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="dash-card dash-card--sync">
+          <h2 class="dash-card__title">Offline Sync by Site</h2>
+          <ul class="dash-sync-list">
+            <li>
+              <strong>Site A</strong>
+              <span class="dash-sync-meta">last 2 min ago</span>
+            </li>
+            <li>
+              <strong>Site B</strong>
+              <span class="dash-sync-meta">last 1 hr ago</span>
+            </li>
+            <li>
+              <strong>Site C</strong>
+              <span class="dash-sync-meta">last today 8:02 AM · 1 waiting</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="dash-card dash-card--full">
+        <h2 class="dash-card__title">Progress Per Project</h2>
+        <table class="dash-table">
+          <thead>
+            <tr><th>Project</th><th>Total Progress</th><th>Status</th><th>Target Finish</th><th></th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Site A</td>
+              <td><div class="cai-progress"><div class="cai-progress__fill" style="width:68%"></div></div></td>
+              <td><span class="cai-badge cai-badge--positive">Ahead</span></td>
+              <td>01/22/2027</td>
+              <td><button class="cai-btn cai-btn--outline" type="button">view project</button></td>
+            </tr>
+            <tr>
+              <td>Site B</td>
+              <td><div class="cai-progress"><div class="cai-progress__fill" style="width:40%"></div></div></td>
+              <td><span class="cai-badge cai-badge--negative">Behind</span></td>
+              <td>05/02/2027</td>
+              <td><button class="cai-btn cai-btn--outline" type="button">view project</button></td>
+            </tr>
+            <tr>
+              <td>Site C</td>
+              <td><div class="cai-progress"><div class="cai-progress__fill" style="width:55%"></div></div></td>
+              <td><span class="cai-badge cai-badge--neutral">On Track</span></td>
+              <td>06/12/2027</td>
+              <td><button class="cai-btn cai-btn--outline" type="button">view project</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="dash-card dash-card--full">
+        <h2 class="dash-card__title">Cost Variance Per Project</h2>
+        <table class="dash-table">
+          <thead>
+            <tr><th>Project</th><th>Total Progress</th><th>Estimated Cost</th><th>Actual Cost</th><th>Net Variance</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Site A</td>
+              <td><div class="cai-progress"><div class="cai-progress__fill" style="width:68%"></div></div></td>
+              <td>₱1,000,000</td>
+              <td>₱850,000</td>
+              <td class="dash-variance--pos">+₱150,000</td>
+            </tr>
+            <tr>
+              <td>Site B</td>
+              <td><div class="cai-progress"><div class="cai-progress__fill" style="width:40%"></div></div></td>
+              <td>₱5,000,000</td>
+              <td>₱6,000,000</td>
+              <td class="dash-variance--neg">-₱1,000,000</td>
+            </tr>
+            <tr>
+              <td>Site C</td>
+              <td><div class="cai-progress"><div class="cai-progress__fill" style="width:55%"></div></div></td>
+              <td>₱3,000,000</td>
+              <td>₱3,000,000</td>
+              <td class="dash-variance--flat">₱0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="../js/layout.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+/* Site A — Billing Support. Also link projects.css and boq.css. */
+
+.bill-header { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 22px; }
+.bill-header .proj-title { margin-right: auto; }
+.bill-project { display: flex; align-items: center; gap: 12px; margin-right: 16px; font-size: var(--cai-heading-3); font-weight: bold; color: #666; }
+
+.bill-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: 18px; }
+.bill-stat { display: flex; flex-direction: column; justify-content: space-between; background: var(--cai-white); border: 1.5px solid var(--cai-black); border-radius: 16px; padding: 14px 18px 18px; }
+.bill-stat__label { margin: 0; font-size: var(--cai-heading-3); font-weight: bold; }
+.bill-stat__value { margin: 12px 0 0; text-align: center; font-size: 28px; font-weight: bold; }
+.bill-stat--retention { border-color: var(--cai-red); color: var(--cai-red); }
+
+.bill-status { margin: 0 0 12px; font-size: 13px; font-weight: bold; }
+.bill-status:empty { display: none; }
+
+.bill-title { margin: 0 0 12px; font-size: var(--cai-heading-2); }
+
+.bill-table { width: 100%; border-collapse: collapse; }
+.bill-table th, .bill-table td { text-align: left; padding: 6px 8px; font-size: 14px; }
+.bill-table th:last-child, .bill-table td:last-child { width: 220px; text-align: right; padding-right: 40px; }
+.bill-table thead th { font-weight: normal; border-bottom: 1px solid var(--cai-light-gray); }
+.bill-table .bill-item td:first-child { padding-left: 56px; }
+
+.bill-table .bill-section th { width: auto; padding: 14px 0 4px; }
+.bill-section button {
+  display: flex; justify-content: space-between; width: 100%;
+  background: none; border: none; padding: 0 8px; cursor: pointer;
+  font: bold var(--cai-heading-3) var(--cai-font-body); color: var(--cai-black); text-align: left;
+}
+.bill-section button:focus-visible { outline: 2px solid var(--cai-yellow); }
+.bill-toggle { color: var(--cai-gray); font-size: var(--cai-heading-2); line-height: 1; }
+
+.bill-actions { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 14px; padding: 24px 0 8px; }
+
+@media (max-width: 1000px) {
+  .bill-stats { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media print {
+  .cai-topbar, .cai-sidebar, .cai-sidebar__resizer, .proj-topline, .proj-tabs,
+  .bill-actions, .bill-toggle, #bill-record, .bill-status { display: none !important; }
+  .cai-content { padding: 0; }
+  .bill-stats { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* section total sits in the header row, lined up with the COST column */
+.bill-section button { align-items: center; }
+.bill-section__total { margin-left: auto; padding-left: 16px; }
+.bill-section .bill-toggle { width: 16px; margin-left: 16px; text-align: center; }
+@media print { .bill-section__total { padding-right: 32px; } }

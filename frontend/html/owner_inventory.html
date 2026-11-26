@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inventory — Carl's Angels Inventory Management</title>
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/projects.css">
+<link rel="stylesheet" href="../css/boq.css">
+<link rel="stylesheet" href="../css/inventory.css">
+</head>
+<body>
+
+<div class="cai-app">
+  <div id="cai-topbar-slot"></div>
+
+  <div class="cai-body">
+    <div id="cai-sidebar-slot"></div>
+
+    <main class="cai-content">
+
+      <div class="proj-topline">
+        <nav class="proj-breadcrumb" aria-label="Breadcrumb">
+          <span>Operations</span>
+          <span aria-hidden="true"> &gt; </span>
+          <span class="proj-breadcrumb__current" aria-current="page">Inventory</span>
+        </nav>
+      </div>
+
+      <div class="inv-toolbar">
+        <label class="inv-filter">
+          <span class="inv-filter__label">Project</span>
+          <select class="boq-input boq-select inv-filter__control" id="inv-project-filter" aria-label="Filter by project"></select>
+        </label>
+
+        <div class="inv-stats">
+          <div class="inv-stat">
+            <p class="inv-stat__label">Low-stock</p>
+            <p class="inv-stat__value" id="inv-stat-low">0</p>
+          </div>
+          <div class="inv-stat">
+            <p class="inv-stat__label">Unavailable</p>
+            <p class="inv-stat__value" id="inv-stat-unavailable">0</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-tabs" role="group" aria-label="Inventory sections">
+        <a class="proj-tabs__tab proj-tabs__tab--active" href="owner_inventory.html" aria-current="page">Inventory</a>
+        <a class="proj-tabs__tab" href="owner_inventory-tools.html">Tools</a>
+      </div>
+
+      <section class="proj-card" aria-label="Inventory items">
+        <div class="proj-table-scroll">
+          <table class="proj-table inv-table">
+            <thead>
+              <tr>
+                <th>Materials</th>
+                <th>Location</th>
+                <th>Quantity</th>
+                <th>Unit</th>
+                <th>Quantity Used</th>
+                <th>Used</th>
+              </tr>
+            </thead>
+            <tbody id="inv-rows"></tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<script>
+// Hardcoded sample data (prototype only). Nothing is persisted.
+// Low-stock = some stock remains but at or below the reorder threshold.
+// Unavailable = no stock remains. Mirrors the alerts on the Dashboard.
+window.CAI_INVENTORY = {
+  projects: ['Office Renovation - Makati', 'Site B - Manila', 'Site C - Pasay'],
+  reorderThreshold: 0.15,   // remaining stock at or below 15% of quantity counts as low-stock
+
+  items: [
+    { material: 'Cement, 40 kg', project: 'Office Renovation - Makati', location: 'Site A Storage', quantity: 100, unit: 'sack', used: 88 },
+    { material: 'Steel pipes', project: 'Office Renovation - Makati', location: 'Site A Storage', quantity: 50, unit: 'pc', used: 50 },
+    { material: 'Rebar 16 mm', project: 'Office Renovation - Makati', location: 'Site A Storage', quantity: 900, unit: 'pc', used: 378 },
+    { material: 'Hollow blocks 4 in', project: 'Office Renovation - Makati', location: 'Site A Storage', quantity: 4200, unit: 'pc', used: 882 },
+    { material: 'Rebar #10', project: 'Site B - Manila', location: 'Site B Storage', quantity: 300, unit: 'pc', used: 120 },
+    { material: 'Plywood sheets', project: 'Site C - Pasay', location: 'Site C Storage', quantity: 60, unit: 'pc', used: 54 },
+    { material: 'Sand', project: 'Site C - Pasay', location: 'Site C Storage', quantity: 40, unit: 'cu.m', used: 10 }
+  ]
+};
+</script>
+<script src="../js/layout.js"></script>
+<script src="../js/inventory.js"></script>
+</body>
+</html>

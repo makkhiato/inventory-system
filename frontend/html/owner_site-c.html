@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Site C BOQ — Carl's Angels Inventory Management</title>
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/projects.css">
+<link rel="stylesheet" href="../css/boq.css">
+</head>
+<body>
+
+<div class="cai-app">
+  <div id="cai-topbar-slot"></div>
+
+  <div class="cai-body">
+    <div id="cai-sidebar-slot"></div>
+
+    <main class="cai-content">
+
+      <div class="proj-topline">
+        <nav class="proj-breadcrumb" aria-label="Breadcrumb">
+          <a href="owner_projects.html">Projects</a>
+          <span aria-hidden="true"> &gt; </span>
+          <a href="owner_site-c.html">Site C</a>
+          <span aria-hidden="true"> &gt; </span>
+          <span class="proj-breadcrumb__current" aria-current="page">BOQ</span>
+        </nav>
+      </div>
+
+      <div class="proj-tabs" role="group" aria-label="Site sections">
+        <a class="proj-tabs__tab proj-tabs__tab--active" href="owner_site-c.html" aria-current="page">BOQ</a>
+        <a class="proj-tabs__tab" href="owner_site-c-bom.html">BOM</a>
+        <button class="proj-tabs__tab" type="button" disabled title="Not built yet">Project Goals</button>
+        <button class="proj-tabs__tab" type="button" disabled title="Not built yet">Usage vs Progress</button>
+        <button class="proj-tabs__tab" type="button" disabled title="Not built yet">Cost Variance</button>
+        <button class="proj-tabs__tab" type="button" disabled title="Not built yet">Billing Support</button>
+        <button class="proj-tabs__tab" type="button" disabled title="Not built yet">Change Orders</button>
+        <button class="proj-tabs__tab" type="button" disabled title="Not built yet">Project Closeout</button>
+      </div>
+
+      <div class="proj-header">
+        <h1 class="proj-title">Bill of Quantity</h1>
+        <div class="proj-header__actions">
+          <button class="cai-btn cai-btn--primary" type="button" id="boq-upload">+ Upload BOQ</button>
+          <button class="cai-btn cai-btn--primary" type="button" id="boq-export">Export CSV</button>
+        </div>
+      </div>
+
+      <div class="boq-contract">
+        <p class="boq-contract__label">Contract Total</p>
+        <p class="boq-contract__amount" id="boq-contract-total"></p>
+      </div>
+
+      <section class="proj-card boq-card" aria-labelledby="boq-title">
+        <div class="boq-card__head">
+          <h2 class="boq-card__title" id="boq-title">Itemized Cost Breakdown</h2>
+          <button class="cai-btn cai-btn--primary" type="button" id="boq-add-section">+ Add Section</button>
+        </div>
+        <div class="boq-table-scroll">
+          <table class="boq-table" id="boq-table"></table>
+        </div>
+      </section>
+
+      <section class="boq-summary" aria-labelledby="summary-title">
+        <h2 class="boq-summary__title" id="summary-title">Cost Summary</h2>
+        <table class="boq-summary__table">
+          <thead>
+            <tr>
+              <th scope="col"><span class="proj-sr-only">Item</span></th>
+              <th scope="col"><span class="proj-sr-only">Rate</span></th>
+              <th scope="col">Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Total Direct Cost</th>
+              <td></td>
+              <td class="boq-summary__amount" id="sum-direct"></td>
+            </tr>
+            <tr>
+              <th scope="row">Indirect Cost (OCM)</th>
+              <td class="boq-summary__pct"><input class="boq-input" id="sum-ocm-pct" type="text" inputmode="decimal" autocomplete="off" aria-label="Indirect cost percentage">%</td>
+              <td class="boq-summary__amount" id="sum-ocm"></td>
+            </tr>
+            <tr>
+              <th scope="row">Profit at</th>
+              <td class="boq-summary__pct"><input class="boq-input" id="sum-profit-pct" type="text" inputmode="decimal" autocomplete="off" aria-label="Profit percentage">%</td>
+              <td class="boq-summary__amount" id="sum-profit"></td>
+            </tr>
+            <tr class="boq-summary__total">
+              <th scope="row">Sub-total</th>
+              <td></td>
+              <td class="boq-summary__amount" id="sum-total"></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<script>
+// Hardcoded sample data for Site C. A row with unit "days" is a labor row
+// (Labor Cost = Qty x Unit Cost); every other row is a material row.
+window.CAI_SITE = {
+  slug: 'site-c',
+  name: 'Site C',
+  contractTotal: 3000000,
+  ocmPct: 8,
+  profitPct: 6,
+  sections: [
+    {
+      title: 'Mobilization/Demobilization',
+      items: [
+        { desc: 'Mob / Demob', qty: 1, unit: 'lot', unitCost: 50000 },
+        { desc: 'Temporary facilities / field office', qty: 1, unit: 'lot', unitCost: 30000 },
+        { desc: 'Construction safety and health (PPE)', qty: 1, unit: 'lot', unitCost: 25000 }
+      ]
+    },
+    {
+      title: 'Carpentry and Formworks',
+      items: [
+        { desc: 'Plywood 3/4" sheets', qty: 320, unit: 'sheets', unitCost: 1150 },
+        { desc: 'Coco lumber 2" x 3" x 10\'', qty: 600, unit: 'pcs', unitCost: 105 },
+        { desc: 'Common wire nails', qty: 150, unit: 'kg', unitCost: 85 },
+        { desc: 'Carpenters', qty: 100, unit: 'days', unitCost: 850 },
+        { desc: 'Laborers/Helpers', qty: 120, unit: 'days', unitCost: 650 }
+      ]
+    },
+    {
+      title: 'Plumbing Works',
+      items: [
+        { desc: 'PVC pipes 4"', qty: 120, unit: 'pcs', unitCost: 420 },
+        { desc: 'PVC fittings and accessories', qty: 1, unit: 'lot', unitCost: 38000 },
+        { desc: 'PPR water supply pipes', qty: 200, unit: 'm', unitCost: 180 },
+        { desc: 'Plumbers', qty: 40, unit: 'days', unitCost: 900 }
+      ]
+    },
+    {
+      title: 'Painting Works',
+      items: [
+        { desc: 'Primer', qty: 60, unit: 'gal', unitCost: 620 },
+        { desc: 'Latex paint', qty: 140, unit: 'gal', unitCost: 750 },
+        { desc: 'Painters', qty: 50, unit: 'days', unitCost: 800 }
+      ]
+    }
+  ]
+};
+</script>
+<script src="../js/layout.js"></script>
+<script src="../js/boq.js"></script>
+</body>
+</html>

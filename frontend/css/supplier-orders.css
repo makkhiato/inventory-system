@@ -1,0 +1,116 @@
+/* ==========================================================================
+   Supplier Orders (owner_supplier-orders.html).
+   Also link projects.css (breadcrumb, header, card shell, table) and
+   boq.css (the .boq-input / .boq-select fields) on this page.
+   ========================================================================== */
+
+/* ---- shared card header row: title + a control on the right ---- */
+
+.so-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.so-card-head .proj-card__title { margin: 0; }
+
+.so-card__title--caps { text-transform: uppercase; }
+
+/* ---- project filter ---- */
+
+.so-filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.so-filter__label {
+  font-size: var(--cai-body-text);
+  font-weight: bold;
+}
+
+.so-filter__control { width: auto; min-width: 220px; }
+
+/* ---- Available to Order table ---- */
+
+.so-ato-table { min-width: 860px; }
+.so-ato-table th, .so-ato-table td { text-align: left; font-weight: normal; }
+.so-ato-table td:first-child { font-weight: bold; }
+.so-ato-table th:last-child, .so-ato-table td:last-child { text-align: center; width: 48px; }
+.so-ato-table .boq-select { min-width: 160px; }
+.so-ato-table input[type="number"] { width: 110px; }
+.so-ato-table input[type="checkbox"] { width: 18px; height: 18px; cursor: pointer; }
+.so-ato-table tbody tr[hidden] { display: none; }
+
+.so-ato-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.so-feedback { margin: 0; font-size: var(--cai-body-text); font-weight: bold; }
+.so-feedback--error { color: var(--cai-red); }
+.so-feedback--ok { color: var(--cai-green); }
+
+/* ---- Order Status / Supplier Directory tables ---- */
+
+.so-order-table, .so-supplier-table { min-width: 760px; }
+.so-order-table th, .so-order-table td,
+.so-supplier-table th, .so-supplier-table td { text-align: left; font-weight: normal; }
+.so-order-table td:first-child, .so-supplier-table td:first-child { font-weight: bold; }
+.so-order-table th:last-child, .so-order-table td:last-child,
+.so-supplier-table th:last-child, .so-supplier-table td:last-child { text-align: right; }
+.so-order-table .cai-btn, .so-supplier-table .cai-btn { padding: 6px 14px; white-space: nowrap; }
+.so-order-table td:nth-child(5):empty::after { content: '—'; color: var(--cai-gray); }
+
+/* ---- dialogs (order details / supplier edit) ---- */
+
+.so-dialog {
+  width: min(560px, calc(100vw - 32px));
+  padding: 22px 24px;
+  background: var(--cai-white);
+  border: 1.5px solid var(--cai-black);
+  border-top: 8px solid var(--cai-yellow);
+  border-radius: 16px;
+}
+.so-dialog::backdrop { background: rgba(0, 0, 0, 0.55); }
+
+.so-dialog__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+.so-dialog__head h2 {
+  display: inline-block;
+  margin: 0 12px 0 0;
+  font-size: var(--cai-heading-2);
+  vertical-align: middle;
+}
+.so-dialog__close { background: none; border: none; font-size: 26px; line-height: 1; cursor: pointer; }
+
+.so-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 18px 0;
+}
+.so-details dt { font-size: 12px; color: #666; }
+.so-details dd { margin: 3px 0 0; font-size: 13px; font-weight: bold; }
+
+.so-items { width: 100%; border-collapse: collapse; font-size: 13px; }
+.so-items th, .so-items td { text-align: left; padding: 8px; border-bottom: 1px solid var(--cai-light-gray); }
+.so-items th { border-bottom: 1.5px solid var(--cai-black); }
+
+.so-form { display: flex; flex-direction: column; gap: 14px; margin-top: 18px; }
+.so-form label { display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: bold; }
+.so-form__actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 6px; }
+
+@media (max-width: 900px) {
+  .so-details { grid-template-columns: 1fr; }
+}

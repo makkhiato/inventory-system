@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Site A Billing Support — Carl's Angels Inventory Management</title>
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/projects.css">
+<link rel="stylesheet" href="../css/boq.css">
+<link rel="stylesheet" href="../css/billing.css">
+</head>
+<body>
+
+<div class="cai-app">
+  <div id="cai-topbar-slot"></div>
+
+  <div class="cai-body">
+    <div id="cai-sidebar-slot"></div>
+
+    <main class="cai-content">
+
+      <div class="proj-topline">
+        <nav class="proj-breadcrumb" aria-label="Breadcrumb">
+          <a href="owner_projects.html">Projects</a>
+          <span aria-hidden="true"> &gt; </span>
+          <a href="owner_site-a.html">Site A</a>
+          <span aria-hidden="true"> &gt; </span>
+          <span class="proj-breadcrumb__current" aria-current="page">Billing Support</span>
+        </nav>
+      </div>
+
+      <div class="proj-tabs" role="group" aria-label="Site sections">
+        <a class="proj-tabs__tab" href="owner_site-a.html">BOQ</a>
+        <a class="proj-tabs__tab" href="owner_site-a-bom.html">BOM</a>
+        <a class="proj-tabs__tab" href="owner_site-a-goals.html">Project Goals</a>
+        <a class="proj-tabs__tab" href="owner_site-a-usage.html">Usage vs Progress</a>
+        <a class="proj-tabs__tab" href="owner_site-a-variance.html">Cost Variance</a>
+        <a class="proj-tabs__tab proj-tabs__tab--active" href="owner_site-a-billing.html" aria-current="page">Billing Support</a>
+        <button class="proj-tabs__tab" type="button" disabled title="Not built yet">Change Orders</button>
+        <button class="proj-tabs__tab" type="button" disabled title="Not built yet">Project Closeout</button>
+      </div>
+
+      <div class="bill-header">
+        <h1 class="proj-title">Billing Support</h1>
+        <label class="bill-project">Project
+          <select class="proj-select__control"><option>Office Renovation - Makati</option></select>
+        </label>
+        <button class="cai-btn cai-btn--primary" type="button" id="bill-record">Record All Unbilled</button>
+      </div>
+
+      <div class="bill-stats">
+        <div class="bill-stat"><p class="bill-stat__label">Contract</p><p class="bill-stat__value">₱6,714,593</p></div>
+        <div class="bill-stat"><p class="bill-stat__label">Earned to date</p><p class="bill-stat__value">₱2,206,224</p></div>
+        <div class="bill-stat bill-stat--retention"><p class="bill-stat__label">Retention held</p><p class="bill-stat__value" id="bill-retention">₱0</p></div>
+        <div class="bill-stat"><p class="bill-stat__label">Ready to bill now, net of retention</p><p class="bill-stat__value" id="bill-ready">₱1,985,601</p></div>
+      </div>
+      <p class="bill-status" id="bill-status" role="status"></p>
+
+      <section class="proj-card" aria-labelledby="bill-title">
+        <h2 class="bill-title" id="bill-title">TASK ACCOMPLISHED</h2>
+        <table class="bill-table">
+          <thead>
+            <tr><th scope="col">DESCRIPTION</th><th scope="col">COST</th></tr>
+          </thead>
+          <tbody>
+            <tr class="bill-section">
+              <th scope="rowgroup" colspan="2">
+                <button type="button" aria-expanded="true"><span>MOBILIZATION/DEMOBILIZATION</span><span class="bill-section__total">₱100,000</span><span class="bill-toggle" aria-hidden="true">−</span></button>
+              </th>
+            </tr>
+            <tr class="bill-item"><td>Mob / Demob</td><td>₱40,000</td></tr>
+            <tr class="bill-item"><td>Hauling materials to site</td><td>₱20,000</td></tr>
+            <tr class="bill-item"><td>Temporary facilities / field office / staff house</td><td>₱20,000</td></tr>
+            <tr class="bill-item"><td>Construction safety and health (PPE)</td><td>₱20,000</td></tr>
+          </tbody>
+          <tbody>
+            <tr class="bill-section">
+              <th scope="rowgroup" colspan="2">
+                <button type="button" aria-expanded="true"><span>BUILDINGS</span><span class="bill-section__total">₱172,700</span><span class="bill-toggle" aria-hidden="true">−</span></button>
+              </th>
+            </tr>
+            <tr class="bill-item"><td>Site clearing and / or demolition works</td><td>₱45,000</td></tr>
+            <tr class="bill-item"><td>Excavation</td><td>₱17,500</td></tr>
+            <tr class="bill-item"><td>Soil poisoning</td><td>₱27,400</td></tr>
+            <tr class="bill-item"><td>Gravel bedding</td><td>₱16,800</td></tr>
+            <tr class="bill-item"><td>Foreman</td><td>₱15,000</td></tr>
+            <tr class="bill-item"><td>Skilled Workers</td><td>₱24,000</td></tr>
+            <tr class="bill-item"><td>Laborers/Helpers</td><td>₱27,000</td></tr>
+          </tbody>
+          <tbody>
+            <tr class="bill-section">
+              <th scope="rowgroup" colspan="2">
+                <button type="button" aria-expanded="true"><span>CONCRETING</span><span class="bill-section__total">₱191,250</span><span class="bill-toggle" aria-hidden="true">−</span></button>
+              </th>
+            </tr>
+            <tr class="bill-item"><td>Cement</td><td>₱69,750</td></tr>
+            <tr class="bill-item"><td>Sand</td><td>₱46,500</td></tr>
+            <tr class="bill-item"><td>Gravel</td><td>₱9,000</td></tr>
+            <tr class="bill-item"><td>Concrete Pump</td><td>₱66,000</td></tr>
+          </tbody>
+        </table>
+        <div class="bill-actions">
+          <button class="cai-btn cai-btn--outline" type="button">← Proceed to Billing</button>
+          <button class="cai-btn cai-btn--primary" type="button" id="bill-export">Export as PDF</button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<script src="../js/layout.js"></script>
+<script src="../js/billing.js"></script>
+</body>
+</html>

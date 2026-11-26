@@ -1,0 +1,82 @@
+/* ==========================================================================
+   Inventory — Tools tab (owner_inventory-tools.html).
+   Also link projects.css (breadcrumb, tabs, card shell, table) and
+   boq.css (the .boq-input / .boq-select fields) on this page.
+   Mirrors inventory.css's toolbar layout, kept as its own file since the
+   two tabs track different things (consumable stock vs. reusable assets).
+   ========================================================================== */
+
+/* ---- toolbar: project filter + stat cards ---- */
+
+.tools-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.tools-filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tools-filter__label {
+  font-size: var(--cai-body-text);
+  font-weight: bold;
+}
+
+.tools-filter__control { width: auto; min-width: 220px; }
+
+.tools-stats {
+  display: flex;
+  gap: 20px;
+}
+
+.tools-stat {
+  background: var(--cai-white);
+  border: 1.5px solid var(--cai-black);
+  border-radius: 16px;
+  padding: 10px 28px 12px;
+  min-width: 150px;
+}
+
+.tools-stat__label {
+  margin: 0;
+  text-align: center;
+  font-size: var(--cai-heading-3);
+  font-weight: bold;
+}
+
+.tools-stat__value {
+  margin: 4px 0 0;
+  text-align: center;
+  font-size: var(--cai-heading-1);
+  font-weight: bold;
+}
+
+.tools-stat--flagged { border-color: var(--cai-red); }
+.tools-stat--flagged .tools-stat__value { color: var(--cai-red); }
+
+/* ---- table ---- */
+
+.tools-table { min-width: 820px; }
+.tools-table td:first-child { font-weight: bold; }
+.tools-table th:nth-child(1), .tools-table td:nth-child(1) { text-align: left; }
+.tools-table th:nth-child(6), .tools-table td:nth-child(6) { text-align: left; }
+.tools-table th:nth-child(5) { min-width: 150px; }
+
+/* Assigned-to text field, left-aligned like the mockup's other text cells */
+.tools-table input[type="text"] { text-align: left; }
+
+/* status select tinted to match the badge palette used elsewhere */
+.tools-status { font-weight: bold; }
+.tools-status--available { color: var(--cai-green); border-color: var(--cai-green); }
+.tools-status--inuse { color: var(--cai-dark-yellow); border-color: var(--cai-dark-yellow); }
+.tools-status--repair { color: var(--cai-red); border-color: var(--cai-red); }
+
+@media (max-width: 900px) {
+  .tools-toolbar { flex-direction: column; align-items: flex-start; }
+}

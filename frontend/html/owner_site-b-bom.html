@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Site B BOM — Carl's Angels Inventory Management</title>
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/projects.css">
+<link rel="stylesheet" href="../css/boq.css">
+<link rel="stylesheet" href="../css/bom.css">
+</head>
+<body>
+
+<div class="cai-app">
+  <div id="cai-topbar-slot"></div>
+
+  <div class="cai-body">
+    <div id="cai-sidebar-slot"></div>
+
+    <main class="cai-content">
+
+      <div class="proj-topline">
+        <nav class="proj-breadcrumb" aria-label="Breadcrumb">
+          <a href="owner_projects.html">Projects</a>
+          <span aria-hidden="true"> &gt; </span>
+          <a href="owner_site-b.html">Site B</a>
+          <span aria-hidden="true"> &gt; </span>
+          <span class="proj-breadcrumb__current" aria-current="page">BOM</span>
+        </nav>
+      </div>
+
+      <div class="proj-tabs" role="group" aria-label="Site sections">
+        <a class="proj-tabs__tab" href="owner_site-b.html">BOQ</a>
+        <a class="proj-tabs__tab proj-tabs__tab--active" href="owner_site-b-bom.html" aria-current="page">BOM</a>
+        <button class="proj-tabs__tab" type="button" disabled title="Not built yet">Project Goals</button>
+        <button class="proj-tabs__tab" type="button" disabled title="Not built yet">Usage vs Progress</button>
+        <button class="proj-tabs__tab" type="button" disabled title="Not built yet">Cost Variance</button>
+        <button class="proj-tabs__tab" type="button" disabled title="Not built yet">Billing Support</button>
+        <button class="proj-tabs__tab" type="button" disabled title="Not built yet">Change Orders</button>
+        <button class="proj-tabs__tab" type="button" disabled title="Not built yet">Project Closeout</button>
+      </div>
+
+      <div class="proj-header">
+        <h1 class="proj-title">Bill of Materials</h1>
+      </div>
+
+      <div class="bom-stats">
+        <div class="bom-stat">
+          <p class="bom-stat__label">Items</p>
+          <p class="bom-stat__value" id="stat-items">0</p>
+        </div>
+        <div class="bom-stat">
+          <p class="bom-stat__label">Fully Used</p>
+          <p class="bom-stat__value" id="stat-full">0</p>
+        </div>
+        <div class="bom-stat">
+          <p class="bom-stat__label">Over Planned Quantity</p>
+          <p class="bom-stat__value" id="stat-over">0</p>
+        </div>
+      </div>
+
+      <section class="proj-card" aria-label="Materials">
+        <div class="bom-table-scroll">
+          <table class="bom-table" id="bom-table"></table>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<script>
+// Hardcoded sample data for Site B. Qty is the planned quantity; used is
+// what has been consumed so far.
+window.CAI_BOM = {
+  slug: 'site-b',
+  name: 'Site B',
+  sections: [
+    {
+      title: 'Structural works',
+      items: [
+        { desc: 'Rebar #10 x 12 m', qty: 850, unit: 'pc', used: 640 },
+        { desc: 'Cement, 40 kg', qty: 1150, unit: 'sack', used: 1150 },
+        { desc: 'Sand', qty: 120, unit: 'cu.m', used: 131 },
+        { desc: 'Gravel', qty: 160, unit: 'cu.m', used: 98 },
+        { desc: 'Plywood 3/4 in', qty: 260, unit: 'sheet', used: 140 }
+      ]
+    },
+    {
+      title: 'Masonry works',
+      items: [
+        { desc: 'CHB 4 in', qty: 6800, unit: 'pc', used: 2400 },
+        { desc: 'CHB 6 in', qty: 3200, unit: 'pc', used: 0 },
+        { desc: 'Cement, 40 kg', qty: 300, unit: 'sack', used: 110 }
+      ]
+    }
+  ]
+};
+</script>
+<script src="../js/layout.js"></script>
+<script src="../js/bom.js"></script>
+</body>
+</html>

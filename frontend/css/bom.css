@@ -1,0 +1,107 @@
+/* ==========================================================================
+   Site pages — BOM tab styles (owner_site-a-bom.html, owner_site-b-bom.html, owner_site-c-bom.html).
+   Also link projects.css (breadcrumb, tabs, header, card shell) and boq.css
+   (the .boq-input field + its error state, and the tab-as-link rule) on these
+   pages. Relies on the tokens in layout.css and .cai-progress in components.css.
+   ========================================================================== */
+
+/* ---- stat cards ---- */
+
+.bom-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.bom-stat {
+  background: var(--cai-white);
+  border: 1.5px solid var(--cai-black);
+  border-radius: 16px;
+  padding: 14px 18px 16px;
+}
+
+.bom-stat__label {
+  margin: 0;
+  font-size: var(--cai-heading-3);
+  font-weight: bold;
+}
+
+.bom-stat__value {
+  margin: 4px 0 0;
+  text-align: center;
+  font-size: var(--cai-heading-1);
+  font-weight: bold;
+}
+
+/* ---- table ---- */
+
+.bom-table-scroll { overflow-x: auto; }
+
+.bom-table {
+  width: 100%;
+  min-width: 820px;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+/* Description takes whatever width the fixed columns leave over */
+.bom-table th:nth-child(1) { width: 80px; }
+.bom-table th:nth-child(3) { width: 90px; }
+.bom-table th:nth-child(4) { width: 90px; }
+.bom-table th:nth-child(5) { width: 150px; }
+.bom-table th:nth-child(6) { width: 110px; }
+.bom-table th:nth-child(7) { width: 230px; }
+
+.bom-table thead th {
+  text-align: left;
+  font-size: var(--cai-body-text);
+  font-weight: bold;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--cai-light-gray);
+}
+
+.bom-table td {
+  text-align: left;
+  font-size: var(--cai-body-text);
+  padding: 6px 8px;
+  vertical-align: middle;
+}
+
+.bom-table .bom-section__title {
+  text-align: left;
+  font-size: var(--cai-heading-3);
+  font-weight: bold;
+  padding: 16px 8px 6px;
+}
+
+/* the Used Qty field right-aligns its number, like the mockup */
+.bom-table .boq-input { text-align: right; }
+
+.bom-negative {
+  color: var(--cai-red);
+  font-weight: bold;
+}
+
+/* ---- used: progress bar + percentage ---- */
+
+.bom-used {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bom-used .cai-progress { flex: 1; }
+
+.bom-used__pct {
+  width: 40px;
+  text-align: right;
+  font-size: var(--cai-body-text);
+}
+
+/* more used than planned turns the bar red */
+.bom-progress--over .cai-progress__fill { background: var(--cai-red); }
+
+@media (max-width: 900px) {
+  .bom-stats { grid-template-columns: 1fr; }
+}

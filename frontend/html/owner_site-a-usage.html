@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Site A Usage vs Progress — Carl's Angels Inventory Management</title>
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/projects.css">
+<link rel="stylesheet" href="../css/boq.css">
+<link rel="stylesheet" href="../css/goals.css">
+<link rel="stylesheet" href="../css/usage.css">
+</head>
+<body>
+
+<div class="cai-app">
+  <div id="cai-topbar-slot"></div>
+
+  <div class="cai-body">
+    <div id="cai-sidebar-slot"></div>
+
+    <main class="cai-content">
+
+      <div class="proj-topline">
+        <nav class="proj-breadcrumb" aria-label="Breadcrumb">
+          <a href="owner_projects.html">Projects</a>
+          <span aria-hidden="true"> &gt; </span>
+          <a href="owner_site-a.html">Site A</a>
+          <span aria-hidden="true"> &gt; </span>
+          <span class="proj-breadcrumb__current" aria-current="page">Usage vs Progress</span>
+        </nav>
+      </div>
+
+      <div class="proj-tabs" role="group" aria-label="Site sections">
+        <a class="proj-tabs__tab" href="owner_site-a.html">BOQ</a>
+        <a class="proj-tabs__tab" href="owner_site-a-bom.html">BOM</a>
+        <a class="proj-tabs__tab" href="owner_site-a-goals.html">Project Goals</a>
+        <a class="proj-tabs__tab proj-tabs__tab--active" href="owner_site-a-usage.html" aria-current="page">Usage vs Progress</a>
+        <a class="proj-tabs__tab" href="owner_site-a-variance.html">Cost Variance</a>
+        <a class="proj-tabs__tab" href="owner_site-a-billing.html">Billing Support</a>
+        <a class="proj-tabs__tab" href="owner_site-a-changes.html">Change Orders</a>
+        <a class="proj-tabs__tab" href="owner_site-a-closeout.html">Project Closeout</a>
+      </div>
+
+      <div class="use-header">
+        <h1 class="proj-title">Usage vs Progress</h1>
+        <label class="use-project">Project
+          <select class="proj-select__control"><option>Office Renovation - Makati</option></select>
+        </label>
+      </div>
+
+      <div class="goal-stats">
+        <div class="goal-stat"><p class="goal-stat__label">Overall Progress</p><p class="goal-stat__value" id="use-overall"></p></div>
+        <div class="goal-stat"><p class="goal-stat__label">Expected by now</p><p class="goal-stat__value">38%</p></div>
+        <div class="goal-stat"><p class="goal-stat__label">Status</p><p class="goal-stat__value"><span class="cai-badge" id="use-status"></span></p></div>
+        <div class="goal-stat"><p class="goal-stat__label">Days to target finish</p><p class="goal-stat__value">49</p></div>
+      </div>
+
+      <div id="use-list"></div>
+
+    </main>
+  </div>
+</div>
+
+<script>
+// Hardcoded sample data for Site A (prototype only). Goals and sub-goals
+// match the activities and tasks in owner_site-a-goals.html. Material "actual"
+// totals add up to Used Qty in owner_site-a-bom.html.
+// Sub-goal: [name, done, materials]; material: [name, unit, expected, actual]
+window.CAI_USAGE = {
+  expected: 38,
+  goals: [
+    { name: 'Mobilization', share: 5, open: true, subgoals: [
+      ['Mobilize equipment and tools', true, [['Cement', 'sack', 100, 49]]],
+      ['Set up field office and temporary facilities', false, []],
+      ['Deliver construction materials to site', false, []],
+      ['Install safety signage and PPE station', false, []],
+      ['Conduct pre-construction meeting', false, []]
+    ] },
+    { name: 'Siteworks', share: 10, subgoals: [
+      ['Clear the site', true, []],
+      ['Lay out and stake the building', false, []],
+      ['Excavate footings', false, []],
+      ['Apply soil treatment', false, []],
+      ['Place gravel bedding', false, [['Gravel', 'cu.m', 14, 0]]]
+    ] },
+    { name: 'Foundation', share: 23, subgoals: [
+      ['Install footing rebar', true, [['Rebar 16 mm', 'pc', 400, 378]]],
+      ['Install footing formworks', true, [['Hollow blocks 4 in', 'pc', 900, 882]]],
+      ['Pour footing concrete', true, [['Cement', 'sack', 250, 239], ['Sand', 'cu.m', 30, 28], ['Gravel', 'cu.m', 22, 20]]],
+      ['Cure and backfill', true, []]
+    ] },
+    { name: 'Structural Works', share: 40, subgoals: [
+      ['Erect columns', false, []], ['Pour beams and slab', false, []],
+      ['Lay hollow block walls', false, []], ['Cure concrete', false, []]
+    ] },
+    { name: 'Finishing and Closeout', share: 22, subgoals: [
+      ['Plaster and paint', false, []], ['Install fixtures', false, []],
+      ['Final inspection', false, []], ['Turn over to client', false, []]
+    ] }
+  ]
+};
+</script>
+<script src="../js/layout.js"></script>
+<script src="../js/usage.js"></script>
+</body>
+</html>

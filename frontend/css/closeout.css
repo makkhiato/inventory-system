@@ -1,0 +1,27 @@
+/* Site A — Project Closeout. Also link projects.css and boq.css. */
+
+.cl-message { margin: 0 0 12px; font-size: 13px; font-weight: bold; }
+.cl-message:empty { display: none; }
+
+.cl-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: 18px; }
+.cl-stat { background: var(--cai-white); border: 1.5px solid var(--cai-black); border-radius: 16px; padding: 14px 18px 18px; min-width: 0; }
+.cl-stat__label { margin: 0; font-size: var(--cai-heading-3); font-weight: bold; }
+.cl-stat__value { margin: 14px 0 0; text-align: center; font-size: clamp(24px, 2.8vw, 40px); font-weight: bold; white-space: nowrap; line-height: 48px; }
+
+.cl-status { display: inline-block; padding: 0 14px; border-radius: 8px; font-size: var(--cai-heading-2); line-height: 40px; background: #c2ddff; color: #0077c2; }
+.cl-status--closed { background: var(--cai-light-green); color: var(--cai-green); }
+
+.cl-title { margin: 0 0 14px; font-size: var(--cai-heading-2); }
+.cl-table { width: 100%; min-width: 720px; border-collapse: collapse; table-layout: fixed; }
+.cl-table th, .cl-table td { text-align: left; padding: 9px 8px; font-size: 14px; }
+.cl-table th { font-size: var(--cai-heading-3); border-bottom: 1.5px solid var(--cai-black); }
+.cl-table td { border-bottom: 1px solid var(--cai-light-gray); }
+
+.cl-control { width: 100%; max-width: 100%; padding: 7px 10px; font: bold 13px var(--cai-font-body); color: var(--cai-black); background: var(--cai-light-gray); border: 1.5px solid var(--cai-light-gray); border-radius: 8px; }
+select.cl-control { cursor: pointer; }
+.cl-control:focus-visible { outline: 2px solid var(--cai-yellow); outline-offset: 1px; }
+.cl-control:disabled { cursor: default; color: #555; }
+
+@media (max-width: 1000px) {
+  .cl-stats { grid-template-columns: repeat(2, 1fr); }
+}

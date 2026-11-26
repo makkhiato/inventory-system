@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Log In — Carl's Angels Inventory Management</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap">
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+
+<main class="login-card">
+  <img class="login-logo" src="../assets/2.svg" alt="Carl's Angels logo">
+  <h1 class="login-title">Carl’s Angels Construction Services</h1>
+
+  <!-- Prototype only: no real authentication. Demo logins (username =
+       password): owner, foreman, procurementstaff, storagemanager.
+       The inputs have no "name", so what is typed is never put in the URL
+       or sent anywhere. -->
+  <form id="login-form">
+    <label for="login-username">Username</label>
+    <input id="login-username" type="text" placeholder="Enter Username" autocomplete="off" required>
+
+    <label for="login-password">Password</label>
+    <input id="login-password" type="password" placeholder="Enter Password" autocomplete="off" required>
+
+    <p id="login-error" class="login-error" role="alert" hidden></p>
+
+    <button type="submit">Log In</button>
+  </form>
+</main>
+
+<script src="../js/login.js"></script>
+</body>
+</html>

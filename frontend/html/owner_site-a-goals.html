@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Site A Project Goals — Carl's Angels Inventory Management</title>
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/projects.css">
+<link rel="stylesheet" href="../css/boq.css">
+<link rel="stylesheet" href="../css/goals.css">
+</head>
+<body>
+
+<div class="cai-app">
+  <div id="cai-topbar-slot"></div>
+
+  <div class="cai-body">
+    <div id="cai-sidebar-slot"></div>
+
+    <main class="cai-content">
+
+      <div class="proj-topline">
+        <nav class="proj-breadcrumb" aria-label="Breadcrumb">
+          <a href="owner_projects.html">Projects</a>
+          <span aria-hidden="true"> &gt; </span>
+          <a href="owner_site-a.html">Site A</a>
+          <span aria-hidden="true"> &gt; </span>
+          <span class="proj-breadcrumb__current" aria-current="page">Project Goals</span>
+        </nav>
+      </div>
+
+      <div class="proj-tabs" role="group" aria-label="Site sections">
+        <a class="proj-tabs__tab" href="owner_site-a.html">BOQ</a>
+        <a class="proj-tabs__tab" href="owner_site-a-bom.html">BOM</a>
+        <a class="proj-tabs__tab proj-tabs__tab--active" href="owner_site-a-goals.html" aria-current="page">Project Goals</a>
+        <a class="proj-tabs__tab" href="owner_site-a-usage.html">Usage vs Progress</a>
+        <a class="proj-tabs__tab" href="owner_site-a-variance.html">Cost Variance</a>
+        <a class="proj-tabs__tab" href="owner_site-a-billing.html">Billing Support</a>
+        <a class="proj-tabs__tab" href="owner_site-a-changes.html">Change Orders</a>
+        <a class="proj-tabs__tab" href="owner_site-a-closeout.html">Project Closeout</a>
+      </div>
+
+      <div class="proj-header">
+        <h1 class="proj-title">Project Goals</h1>
+        <div class="proj-header__actions">
+          <button class="cai-btn cai-btn--primary" type="button" id="goal-equal">Set Equal % for All</button>
+          <button class="cai-btn cai-btn--primary" type="button" id="goal-add">+ Add Activity</button>
+        </div>
+      </div>
+
+      <div class="goal-top">
+        <fieldset class="goal-target">
+          <legend class="proj-sr-only">Target Finish</legend>
+          <p class="goal-target__title" aria-hidden="true">Target Finish</p>
+          <label>Start Date <input class="boq-input" type="date" id="goal-start"></label>
+          <label>Target finish of the whole project <input class="boq-input" type="date" id="goal-finish"></label>
+        </fieldset>
+        <div class="goal-top__side">
+          <output class="goal-chip" id="goal-share-total" title="Total share of project"></output>
+          <button class="cai-btn cai-btn--primary" type="button" id="goal-upload">+ Upload Activity</button>
+        </div>
+      </div>
+
+      <div class="goal-stats">
+        <div class="goal-stat"><p class="goal-stat__label">Overall Progress</p><p class="goal-stat__value" id="goal-overall"></p></div>
+        <div class="goal-stat"><p class="goal-stat__label">Expected by now</p><p class="goal-stat__value" id="goal-expected"></p></div>
+        <div class="goal-stat"><p class="goal-stat__label">Status</p><p class="goal-stat__value"><span class="cai-badge" id="goal-status"></span></p></div>
+        <div class="goal-stat"><p class="goal-stat__label">Days to target finish</p><p class="goal-stat__value" id="goal-days"></p></div>
+      </div>
+
+      <div id="goal-list"></div>
+
+    </main>
+  </div>
+</div>
+
+<script>
+// Hardcoded sample data for Site A (prototype only).
+// asOf is a fixed "today" so screenshots for the paper don't change daily.
+// materials mirrors the Site A BOM (owner_site-a-bom.html).
+(function () {
+  function tasks(done, names) {
+    return names.map(function (n, i) {
+      return { name: n[0], weight: 100 / names.length, done: i < done, completedOn: i < done ? n[1] : '' };
+    });
+  }
+  window.CAI_GOALS = {
+    asOf: '2026-11-15',
+    start: '2026-10-01',
+    finish: '2027-01-03',
+    materials: [
+      { name: 'Cement, 40 kg', unit: 'sack' },
+      { name: 'Hollow blocks 4 in', unit: 'pc' },
+      { name: 'Rebar 16 mm', unit: 'pc' },
+      { name: 'Sand', unit: 'cu.m' },
+      { name: 'Gravel', unit: 'cu.m' },
+      { name: 'Formworks', unit: 'lot' }
+    ],
+    activities: [
+      { name: 'Mobilization', start: '2026-10-01', end: '2026-10-08', share: 5, open: true,
+        tasks: tasks(1, [
+          ['Mobilize equipment and tools', '2026-10-02'],
+          ['Set up field office and temporary facilities'],
+          ['Deliver construction materials to site'],
+          ['Install safety signage and PPE station'],
+          ['Conduct pre-construction meeting']]),
+        materials: [{ name: 'Cement, 40 kg', qty: '', unit: 'sack' }] },
+      { name: 'Siteworks', start: '2026-10-09', end: '2026-10-16', share: 10,
+        tasks: tasks(1, [
+          ['Clear the site', '2026-10-12'], ['Lay out and stake the building'],
+          ['Excavate footings'], ['Apply soil treatment'], ['Place gravel bedding']]),
+        materials: [{ name: 'Gravel', qty: 14, unit: 'cu.m' }] },
+      { name: 'Foundation', start: '2026-10-17', end: '2026-11-14', share: 23,
+        tasks: tasks(4, [
+          ['Install footing rebar', '2026-10-24'], ['Install footing formworks', '2026-10-29'],
+          ['Pour footing concrete', '2026-11-05'], ['Cure and backfill', '2026-11-13']]),
+        materials: [] },
+      { name: 'Structural Works', start: '2026-11-16', end: '2026-12-12', share: 40,
+        tasks: tasks(0, [['Erect columns'], ['Pour beams and slab'], ['Lay hollow block walls'], ['Cure concrete']]),
+        materials: [] },
+      { name: 'Finishing and Closeout', start: '2026-12-13', end: '2027-01-03', share: 22,
+        tasks: tasks(0, [['Plaster and paint'], ['Install fixtures'], ['Final inspection'], ['Turn over to client']]),
+        materials: [] }
+    ]
+  };
+})();
+</script>
+<script src="../js/layout.js"></script>
+<script src="../js/goals.js"></script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+/* ==========================================================================
+   Project List — page-specific styles.
+   Relies on the tokens defined in layout.css and the shared buttons,
+   badges and progress bar in components.css.
+   ========================================================================== */
+
+/* ---- breadcrumb + project selector ---- */
+
+.proj-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.proj-breadcrumb {
+  font-size: var(--cai-body-text);
+  color: var(--cai-gray);
+}
+
+.proj-breadcrumb a {
+  color: var(--cai-gray);
+  text-decoration: none;
+}
+
+.proj-breadcrumb a:hover { color: var(--cai-black); }
+
+.proj-breadcrumb__current {
+  color: var(--cai-black);
+  font-weight: bold;
+}
+
+.proj-select { display: inline-block; }
+
+.proj-select__label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.proj-select__control {
+  font-family: var(--cai-font-body);
+  font-size: var(--cai-body-text);
+  font-weight: bold;
+  color: var(--cai-black);
+  background: var(--cai-light-gray);
+  border: 1.5px solid var(--cai-gray);
+  border-radius: 8px;
+  padding: 6px 12px;
+  min-width: 200px;
+  cursor: pointer;
+}
+
+.proj-select__control:focus-visible {
+  outline: 2px solid var(--cai-yellow);
+  outline-offset: 2px;
+}
+
+/* ---- tabs ---- */
+
+.proj-tabs {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--cai-light-gray);
+}
+
+.proj-tabs__tab {
+  font-family: var(--cai-font-body);
+  font-size: var(--cai-body-text);
+  font-weight: bold;
+  color: var(--cai-gray);
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  padding: 8px 4px;
+  margin-bottom: -1px;
+  cursor: pointer;
+}
+
+.proj-tabs__tab:hover { color: var(--cai-black); }
+
+.proj-tabs__tab--active {
+  color: var(--cai-black);
+  border-bottom-color: var(--cai-black);
+}
+
+/* ---- page header ---- */
+
+.proj-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.proj-title {
+  margin: 0;
+  font-size: var(--cai-heading-1);
+}
+
+.proj-header__actions {
+  display: flex;
+  gap: 12px;
+}
+
+.proj-header__actions .cai-btn {
+  font-size: var(--cai-body-text);
+  padding: 10px 18px;
+}
+
+/* ---- cards ---- */
+
+.proj-card {
+  background: var(--cai-white);
+  border: 1.5px solid var(--cai-black);
+  border-radius: 16px;
+  padding: 16px 20px 12px;
+  margin-bottom: 28px;
+}
+
+.proj-card__title {
+  margin: 0 0 12px;
+  font-size: var(--cai-heading-3);
+}
+
+/* ---- table ---- */
+
+.proj-table-scroll { overflow-x: auto; }
+
+.proj-table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+}
+
+.proj-table th {
+  text-align: center;
+  font-size: var(--cai-body-text);
+  font-weight: bold;
+  color: var(--cai-black);
+  padding: 6px 10px;
+  border-bottom: 1.5px solid var(--cai-black);
+}
+
+.proj-table td {
+  text-align: center;
+  font-size: var(--cai-body-text);
+  font-weight: bold;
+  padding: 10px;
+  border-bottom: 1px solid var(--cai-light-gray);
+  vertical-align: middle;
+}
+
+.proj-table th:first-child,
+.proj-table td:first-child { text-align: left; }
+
+.proj-table tbody tr:last-child td { border-bottom: none; }
+
+/* progress column needs a minimum width so the bar stays readable */
+.proj-table td:nth-child(6) { min-width: 130px; }
+
+.proj-table .cai-badge {
+  font-size: var(--cai-body-text);
+  padding: 2px 12px;
+}
+
+.proj-table .cai-btn {
+  font-size: var(--cai-body-text);
+  padding: 4px 12px;
+  border-radius: 8px;
+}
+
+.proj-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .proj-topline { flex-direction: column; align-items: flex-start; }
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Site A Project Closeout — Carl's Angels Inventory Management</title>
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/projects.css">
+<link rel="stylesheet" href="../css/boq.css">
+<link rel="stylesheet" href="../css/closeout.css">
+</head>
+<body>
+
+<div class="cai-app">
+  <div id="cai-topbar-slot"></div>
+
+  <div class="cai-body">
+    <div id="cai-sidebar-slot"></div>
+
+    <main class="cai-content">
+
+      <div class="proj-topline">
+        <nav class="proj-breadcrumb" aria-label="Breadcrumb">
+          <a href="owner_projects.html">Project List</a>
+          <span aria-hidden="true"> &gt; </span>
+          <a href="owner_site-a.html">Site A</a>
+          <span aria-hidden="true"> &gt; </span>
+          <span class="proj-breadcrumb__current" aria-current="page">Project Closeout</span>
+        </nav>
+      </div>
+
+      <div class="proj-tabs" role="group" aria-label="Site sections">
+        <a class="proj-tabs__tab" href="owner_site-a.html">BOQ</a>
+        <a class="proj-tabs__tab" href="owner_site-a-bom.html">BOM</a>
+        <a class="proj-tabs__tab" href="owner_site-a-goals.html">Project Goals</a>
+        <a class="proj-tabs__tab" href="owner_site-a-usage.html">Usage vs Progress</a>
+        <a class="proj-tabs__tab" href="owner_site-a-variance.html">Cost Variance</a>
+        <a class="proj-tabs__tab" href="owner_site-a-billing.html">Billing Support</a>
+        <a class="proj-tabs__tab" href="owner_site-a-changes.html">Change Orders</a>
+        <a class="proj-tabs__tab proj-tabs__tab--active" href="owner_site-a-closeout.html" aria-current="page">Project Closeout</a>
+      </div>
+
+      <div class="proj-header">
+        <h1 class="proj-title">Project Closeout</h1>
+        <div class="proj-header__actions">
+          <button class="cai-btn cai-btn--outline" type="button" id="cl-add">+ Punch Item</button>
+          <button class="cai-btn cai-btn--primary" type="button" id="cl-close">Close Project</button>
+        </div>
+      </div>
+
+      <p class="cl-message" id="cl-message" role="status"></p>
+
+      <div class="cl-stats">
+        <div class="cl-stat"><p class="cl-stat__label">Leftover value</p><p class="cl-stat__value" id="cl-leftover"></p></div>
+        <div class="cl-stat"><p class="cl-stat__label">Punch items open</p><p class="cl-stat__value" id="cl-open"></p></div>
+        <div class="cl-stat"><p class="cl-stat__label">Final variance</p><p class="cl-stat__value" id="cl-variance"></p></div>
+        <div class="cl-stat"><p class="cl-stat__label">Status</p><p class="cl-stat__value"><span class="cl-status" id="cl-status">Ongoing</span></p></div>
+      </div>
+
+      <section class="proj-card" aria-labelledby="cl-materials-title">
+        <h2 class="cl-title" id="cl-materials-title">Leftover materials</h2>
+        <div class="proj-table-scroll">
+          <table class="cl-table">
+            <thead><tr><th scope="col">Material</th><th scope="col">Remaining</th><th scope="col">Value at BOQ cost</th><th scope="col">Decision</th></tr></thead>
+            <tbody id="cl-materials"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="proj-card" aria-labelledby="cl-punch-title">
+        <h2 class="cl-title" id="cl-punch-title">Punch list</h2>
+        <div class="proj-table-scroll">
+          <table class="cl-table">
+            <thead><tr><th scope="col">Item</th><th scope="col">Status</th><th scope="col"><span class="proj-sr-only">Actions</span></th></tr></thead>
+            <tbody id="cl-punch"></tbody>
+          </table>
+        </div>
+        <datalist id="cl-suggestions">
+          <option value="Touch-up painting"></option>
+          <option value="Fix door alignment"></option>
+          <option value="Repair wall cracks"></option>
+          <option value="Final site cleanup"></option>
+        </datalist>
+      </section>
+
+      <section class="proj-card" aria-labelledby="cl-summary-title">
+        <h2 class="cl-title" id="cl-summary-title">Final materials summary</h2>
+        <div class="proj-table-scroll">
+          <table class="cl-table">
+            <thead><tr><th scope="col">Estimated (BOQ)</th><th scope="col">Actual cost</th><th scope="col">Difference</th><th scope="col">Approved change orders</th></tr></thead>
+            <tbody><tr><td id="cl-estimated"></td><td id="cl-actual"></td><td id="cl-difference"></td><td id="cl-changes"></td></tr></tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<script>
+// Hardcoded sample data for Site A (prototype only). qty and used match
+// owner_site-a-bom.html; planned and paid match owner_site-a-variance.html.
+window.CAI_CLOSEOUT = {
+  approvedChanges: 0,
+  punch: [],
+  materials: [
+    { name: 'Cement, 40 kg',      unit: 'sack', qty: 600,  used: 288, planned: 265,    paid: 275 },
+    { name: 'Hollow blocks 4 in', unit: 'pc',   qty: 4200, used: 882, planned: 14,     paid: 14 },
+    { name: 'Rebar 16 mm',        unit: 'pc',   qty: 900,  used: 378, planned: 690,    paid: 705 },
+    { name: 'Sand',               unit: 'cu.m', qty: 60,   used: 28,  planned: 1300,   paid: 1350 },
+    { name: 'Gravel',             unit: 'cu.m', qty: 45,   used: 20,  planned: 1200,   paid: 1200 },
+    { name: 'Formworks',          unit: 'lot',  qty: 1,    used: 0,   planned: 120000, paid: 120000 }
+  ]
+};
+</script>
+<script src="../js/layout.js"></script>
+<script src="../js/closeout.js"></script>
+</body>
+</html>

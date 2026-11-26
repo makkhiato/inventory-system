@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project List — Carl's Angels Inventory Management</title>
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/projects.css">
+</head>
+<body>
+
+<div class="cai-app">
+  <div id="cai-topbar-slot"></div>
+
+  <div class="cai-body">
+    <div id="cai-sidebar-slot"></div>
+
+    <main class="cai-content">
+
+      <div class="proj-topline">
+        <nav class="proj-breadcrumb" aria-label="Breadcrumb">
+          <a href="owner_projects.html">Project List</a>
+          <span aria-hidden="true"> &gt; </span>
+          <span class="proj-breadcrumb__current" aria-current="page">Project Overview</span>
+        </nav>
+
+        <label class="proj-select">
+          <span class="proj-select__label">Select project</span>
+          <select class="proj-select__control">
+            <option>Office Renovation - Makati</option>
+            <option>Site B - Manila</option>
+            <option>Site C - Pasay</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="proj-tabs" role="tablist">
+        <button class="proj-tabs__tab proj-tabs__tab--active" type="button" role="tab" aria-selected="true">Overview</button>
+      </div>
+
+      <div class="proj-header">
+        <h1 class="proj-title">Project Overview</h1>
+        <div class="proj-header__actions">
+          <button class="cai-btn cai-btn--primary" type="button">Import Existing Project</button>
+          <button class="cai-btn cai-btn--primary" type="button">+ New Project</button>
+        </div>
+      </div>
+
+      <section class="proj-card" aria-labelledby="active-title">
+        <h2 class="proj-card__title" id="active-title">Active Projects</h2>
+        <div class="proj-table-scroll">
+          <table class="proj-table">
+            <thead>
+              <tr>
+                <th>Site</th>
+                <th>Client</th>
+                <th>Location</th>
+                <th>Target Finish</th>
+                <th>Estimated Cost</th>
+                <th>Total Progress</th>
+                <th>Status</th>
+                <th><span class="proj-sr-only">Actions</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Site A</td>
+                <td>Jose Cruz</td>
+                <td>Makati</td>
+                <td>01/22/2027</td>
+                <td>₱1,000,000</td>
+                <td><div class="cai-progress"><div class="cai-progress__fill" style="width:68%"></div></div></td>
+                <td><span class="cai-badge cai-badge--positive">Ahead</span></td>
+                <td><button class="cai-btn cai-btn--outline" type="button">Open</button></td>
+              </tr>
+              <tr>
+                <td>Site B</td>
+                <td>Jody Anne</td>
+                <td>Manila</td>
+                <td>05/02/2027</td>
+                <td>₱5,000,000</td>
+                <td><div class="cai-progress"><div class="cai-progress__fill" style="width:40%"></div></div></td>
+                <td><span class="cai-badge cai-badge--negative">Behind</span></td>
+                <td><button class="cai-btn cai-btn--outline" type="button">Open</button></td>
+              </tr>
+              <tr>
+                <td>Site C</td>
+                <td>Mario Mario</td>
+                <td>Pasay</td>
+                <td>06/12/2027</td>
+                <td>₱3,000,000</td>
+                <td><div class="cai-progress"><div class="cai-progress__fill" style="width:55%"></div></div></td>
+                <td><span class="cai-badge cai-badge--neutral">On Track</span></td>
+                <td><button class="cai-btn cai-btn--outline" type="button">Open</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="proj-card" aria-labelledby="archived-title">
+        <h2 class="proj-card__title" id="archived-title">Archived Projects</h2>
+        <div class="proj-table-scroll">
+          <table class="proj-table">
+            <thead>
+              <tr>
+                <th>Site</th>
+                <th>Client</th>
+                <th>Location</th>
+                <th>Target Finish</th>
+                <th>Estimated Cost</th>
+                <th>Total Progress</th>
+                <th>Status</th>
+                <th><span class="proj-sr-only">Actions</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Site A</td>
+                <td>Jose Cruz</td>
+                <td>Makati</td>
+                <td>01/22/2027</td>
+                <td>₱1,000,000</td>
+                <td><div class="cai-progress"><div class="cai-progress__fill" style="width:100%"></div></div></td>
+                <td><span class="cai-badge cai-badge--positive">Done</span></td>
+                <td><button class="cai-btn cai-btn--outline" type="button">Open</button></td>
+              </tr>
+              <tr>
+                <td>Site B</td>
+                <td>Jody Anne</td>
+                <td>Manila</td>
+                <td>05/02/2027</td>
+                <td>₱5,000,000</td>
+                <td><div class="cai-progress"><div class="cai-progress__fill" style="width:100%"></div></div></td>
+                <td><span class="cai-badge cai-badge--positive">Done</span></td>
+                <td><button class="cai-btn cai-btn--outline" type="button">Open</button></td>
+              </tr>
+              <tr>
+                <td>Site C</td>
+                <td>Mario Mario</td>
+                <td>Pasay</td>
+                <td>06/12/2027</td>
+                <td>₱3,000,000</td>
+                <td><div class="cai-progress"><div class="cai-progress__fill" style="width:100%"></div></div></td>
+                <td><span class="cai-badge cai-badge--positive">Done</span></td>
+                <td><button class="cai-btn cai-btn--outline" type="button">Open</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<script src="../js/layout.js"></script>
+</body>
+</html>

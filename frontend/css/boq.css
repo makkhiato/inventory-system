@@ -1,0 +1,281 @@
+/* ==========================================================================
+   Site pages — BOQ tab styles (owner_site-a.html, owner_site-b.html, owner_site-c.html).
+   Also link projects.css on these pages: the breadcrumb, tabs, page header
+   and card shell reuse its .proj-* classes. Relies on the tokens in
+   layout.css and the buttons in components.css.
+   ========================================================================== */
+
+/* tabs that aren't built yet stay visible but don't react */
+.proj-tabs__tab:disabled { cursor: default; }
+.proj-tabs__tab:disabled:hover { color: var(--cai-gray); }
+
+/* BOQ / BOM tabs are real links */
+a.proj-tabs__tab { text-decoration: none; }
+
+/* ---- contract total ---- */
+
+.boq-contract {
+  display: inline-block;
+  background: var(--cai-white);
+  border: 1.5px solid var(--cai-black);
+  border-radius: 16px;
+  padding: 10px 22px 8px;
+  margin-bottom: 20px;
+}
+
+.boq-contract__label {
+  margin: 0;
+  font-size: var(--cai-heading-3);
+  font-weight: bold;
+}
+
+.boq-contract__amount {
+  margin: 4px 0 0;
+  font-size: var(--cai-heading-1);
+  font-weight: bold;
+}
+
+/* ---- itemized cost breakdown card ---- */
+
+.boq-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.boq-card__title {
+  margin: 0;
+  font-size: var(--cai-heading-2);
+}
+
+.boq-card__head .cai-btn {
+  font-size: var(--cai-body-text);
+  padding: 10px 18px;
+}
+
+.boq-table-scroll { overflow-x: auto; }
+
+.boq-table {
+  width: 100%;
+  min-width: 1000px;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+/* Description takes whatever width the fixed columns leave over */
+.boq-table th:nth-child(1) { width: 64px; }
+.boq-table th:nth-child(3) { width: 90px; }
+.boq-table th:nth-child(4) { width: 96px; }
+.boq-table th:nth-child(5) { width: 120px; }
+.boq-table th:nth-child(6) { width: 130px; }
+.boq-table th:nth-child(7) { width: 120px; }
+.boq-table th:nth-child(8) { width: 130px; }
+
+.boq-table thead th {
+  text-align: center;
+  font-size: var(--cai-body-text);
+  font-weight: bold;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--cai-light-gray);
+}
+
+.boq-table td {
+  text-align: center;
+  font-size: var(--cai-body-text);
+  padding: 4px 6px;
+  vertical-align: middle;
+}
+
+/* ---- section header row ---- */
+
+.boq-section__head { padding-top: 18px; }
+
+/* full-width bar around the title box and the edit button */
+.boq-section__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--cai-white);
+  border: 1.5px solid var(--cai-black);
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+
+.boq-section__titlebox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 1 440px;
+  min-width: 0;
+  background: var(--cai-white);
+  border: 1.5px solid var(--cai-black);
+  border-radius: 8px;
+  padding: 4px 10px;
+}
+
+.boq-section__titlebox:focus-within {
+  outline: 2px solid var(--cai-yellow);
+  outline-offset: 1px;
+}
+
+.boq-section__num {
+  font-size: var(--cai-body-text);
+  font-weight: bold;
+}
+
+.boq-section__input {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--cai-font-body);
+  font-size: var(--cai-body-text);
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--cai-black);
+  background: transparent;
+  border: none;
+  padding: 2px 0;
+}
+
+.boq-section__input:focus { outline: none; }
+.boq-section__input:read-only { cursor: default; }
+
+.boq-edit,
+.boq-add-item {
+  font-size: var(--cai-body-text);
+  padding: 4px 12px;
+  border-radius: 8px;
+}
+
+/* ---- item rows ---- */
+
+.boq-itemno { font-weight: bold; }
+
+/* Input field — default and error states from the design guide */
+.boq-input {
+  width: 100%;
+  font-family: var(--cai-font-body);
+  font-size: var(--cai-body-text);
+  color: var(--cai-black);
+  background: var(--cai-white);
+  border: 1.5px solid var(--cai-light-gray);
+  border-radius: 8px;
+  padding: 6px 8px;
+  text-align: center;
+}
+
+.boq-input--text { text-align: left; }
+
+.boq-input:focus-visible {
+  outline: 2px solid var(--cai-yellow);
+  outline-offset: 1px;
+  border-color: var(--cai-black);
+}
+
+.boq-input--error {
+  background: var(--cai-light-red);
+  border-color: var(--cai-red);
+  color: var(--cai-red);
+}
+
+.boq-select {
+  padding: 6px 4px;
+  cursor: pointer;
+}
+
+/* View-only cell text. Same box size as an input so a row doesn't change
+   height when its section switches into edit mode. */
+.boq-cell-text {
+  display: block;
+  padding: 6px 8px;
+  border: 1.5px solid transparent;
+}
+
+.boq-cell-text--left { text-align: left; }
+
+.boq-money { font-weight: bold; }
+
+.boq-total {
+  display: inline-block;
+  min-width: 100px;
+  border: 1.5px solid var(--cai-black);
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+
+/* ---- sub-total row ---- */
+
+.boq-subtotal td { padding-top: 10px; }
+
+/* .boq-table prefix so these beat the table's centered td rule */
+.boq-table .boq-subtotal__add { text-align: left; }
+
+.boq-table .boq-subtotal__label {
+  text-align: right;
+  font-weight: bold;
+  padding-right: 12px;
+}
+
+/* ---- cost summary ---- */
+
+.boq-summary {
+  max-width: 560px;
+  margin: 0 auto 28px;
+  background: var(--cai-white);
+  border: 1.5px solid var(--cai-black);
+  border-radius: 16px;
+  padding: 16px 24px 20px;
+}
+
+.boq-summary__title {
+  margin: 0 0 12px;
+  font-size: var(--cai-heading-2);
+}
+
+.boq-summary__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.boq-summary__table thead th {
+  text-align: right;
+  font-size: var(--cai-heading-3);
+  padding: 6px 0;
+  border-bottom: 1.5px solid var(--cai-black);
+}
+
+.boq-summary__table tbody th {
+  text-align: left;
+  font-size: var(--cai-heading-3);
+  padding: 10px 0;
+}
+
+.boq-summary__pct {
+  width: 130px;
+  white-space: nowrap;
+  font-size: var(--cai-heading-3);
+  font-weight: bold;
+}
+
+.boq-summary__pct .boq-input {
+  width: 80px;
+  margin-right: 6px;
+}
+
+.boq-summary__amount {
+  text-align: right;
+  font-size: var(--cai-heading-3);
+  font-weight: bold;
+}
+
+.boq-summary__total th,
+.boq-summary__total td {
+  border-top: 1.5px solid var(--cai-black);
+}
+
+.boq-summary__total th,
+.boq-summary__total .boq-summary__amount {
+  font-size: var(--cai-heading-2);
+}

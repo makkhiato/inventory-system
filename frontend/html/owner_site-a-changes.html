@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Site A Change Orders — Carl's Angels Inventory Management</title>
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/projects.css">
+<link rel="stylesheet" href="../css/boq.css">
+<link rel="stylesheet" href="../css/changes.css">
+</head>
+<body>
+
+<div class="cai-app">
+  <div id="cai-topbar-slot"></div>
+
+  <div class="cai-body">
+    <div id="cai-sidebar-slot"></div>
+
+    <main class="cai-content">
+
+      <div class="proj-topline">
+        <nav class="proj-breadcrumb" aria-label="Breadcrumb">
+          <a href="owner_projects.html">Project List</a>
+          <span aria-hidden="true"> &gt; </span>
+          <a href="owner_site-a.html">Site A</a>
+          <span aria-hidden="true"> &gt; </span>
+          <span class="proj-breadcrumb__current" aria-current="page">Change Orders</span>
+        </nav>
+      </div>
+
+      <div class="proj-tabs" role="group" aria-label="Site sections">
+        <a class="proj-tabs__tab" href="owner_site-a.html">BOQ</a>
+        <a class="proj-tabs__tab" href="owner_site-a-bom.html">BOM</a>
+        <a class="proj-tabs__tab" href="owner_site-a-goals.html">Project Goals</a>
+        <a class="proj-tabs__tab" href="owner_site-a-usage.html">Usage vs Progress</a>
+        <a class="proj-tabs__tab" href="owner_site-a-variance.html">Cost Variance</a>
+        <a class="proj-tabs__tab" href="owner_site-a-billing.html">Billing Support</a>
+        <a class="proj-tabs__tab proj-tabs__tab--active" href="owner_site-a-changes.html" aria-current="page">Change Orders</a>
+        <button class="proj-tabs__tab" type="button" disabled title="Not built yet">Project Closeout</button>
+      </div>
+
+      <div class="co-header">
+        <h1 class="proj-title">Change Orders</h1>
+        <label class="co-project">Project
+          <select class="proj-select__control"><option>Office Renovation - Makati</option></select>
+        </label>
+        <button class="cai-btn cai-btn--primary" type="button" id="co-new">+ New Change Order</button>
+      </div>
+
+      <div class="co-stats">
+        <div class="co-stat"><p class="co-stat__label">Awaiting decision</p><p class="co-stat__value" id="co-pending"></p></div>
+        <div class="co-stat"><p class="co-stat__label">Approved cost impact</p><p class="co-stat__value" id="co-approved"></p></div>
+        <div class="co-stat"><p class="co-stat__label">Rejected</p><p class="co-stat__value" id="co-rejected"></p></div>
+        <div class="co-stat"><p class="co-stat__label">Contract now</p><p class="co-stat__value" id="co-contract"></p></div>
+      </div>
+
+      <div id="co-list"></div>
+
+    </main>
+  </div>
+</div>
+
+<script>
+// Hardcoded sample data for Site A (prototype only).
+// contract = contract amount before any approved change orders.
+window.CAI_CHANGES = {
+  contract: 6681823,
+  orders: [
+    {
+      description: 'Additional steel stair landing',
+      decision: 'Pending',
+      items: [
+        { name: 'Cement', unit: 'sacks', qty: 50, cost: 250 },
+        { name: 'Sand', unit: 'm³', qty: 4, cost: 1500 },
+        { name: '16 mm dia. deformed bars', unit: 'pcs', qty: 20, cost: 545 },
+        { name: 'Tie wire', unit: 'roll', qty: 1, cost: 2100 }
+      ]
+    }
+  ]
+};
+</script>
+<script src="../js/layout.js"></script>
+<script src="../js/changes.js"></script>
+</body>
+</html>

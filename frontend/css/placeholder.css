@@ -1,0 +1,23 @@
+/* ==========================================================================
+   Placeholder pages — temporary styles for sidebar pages that haven't been
+   designed yet. Delete this file once every page has its real design.
+   ========================================================================== */
+
+.ph-title {
+  margin: 0 0 20px;
+  font-size: var(--cai-heading-1);
+}
+
+.ph-card {
+  background: var(--cai-white);
+  border: 1.5px solid var(--cai-black);
+  border-radius: 16px;
+  padding: 24px;
+  max-width: 560px;
+}
+
+.ph-card p {
+  margin: 0 0 16px;
+  font-size: var(--cai-heading-3);
+  color: var(--cai-gray);
+}
