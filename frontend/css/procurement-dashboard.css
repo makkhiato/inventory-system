@@ -1,0 +1,43 @@
+/* ==========================================================================
+   Procurement Dashboard — page-specific styles.
+   Also link dashboard.css (cards, tables, welcome heading) and
+   components.css (buttons, badges).
+   ========================================================================== */
+
+/* Shortages is the wider card, Sync Status the narrower one. */
+.pd-card--shortages { flex: 1.7; min-width: 0; }
+.pd-card--sync { flex: 1; min-width: 0; }
+
+/* Card title on the left, a badge or filter buttons on the right. */
+.pd-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-bottom: 12px;
+}
+.pd-card-head .dash-card__title { margin: 0; }
+
+/* Notifications: the icon column is narrow, so the table reads as a list. */
+.pd-notifications td:first-child { width: 40px; }
+.dash-table-scroll.pd-scroll { max-height: 260px; }
+
+/* Pending / Approved filter. Active one uses the primary (yellow) button. */
+.pd-toggle { display: flex; gap: 8px; flex-wrap: wrap; }
+.pd-toggle .cai-btn { padding: 5px 12px; border-radius: 999px; white-space: nowrap; }
+.pd-toggle .cai-btn:focus-visible,
+.dash-table .cai-btn:focus-visible { outline: 2px solid var(--cai-black); outline-offset: 2px; }
+
+/* Header text kept for screen readers where the mockup shows no label. */
+.pd-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Action buttons sit flush right in their column. */
+.dash-table td:last-child:has(.cai-btn) { text-align: right; }

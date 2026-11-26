@@ -1,7 +1,7 @@
 /* ==========================================================================
    Carl's Angels Inventory Management — Inventory
 
-   Data comes from window.CAI_INVENTORY (see owner_inventory.html). Prototype
+   Data comes from window.CAI_INVENTORY (see owner_inventory.html and procurement_inventory.html). Prototype
    only: nothing is saved. Swap CAI_INVENTORY for a real API response
    later and the rendering below can stay as-is.
 
@@ -61,6 +61,10 @@
     data.projects.forEach(function (p) {
       filterSelect.appendChild(el('option', { value: p, text: p }));
     });
+    // Optional: a page can open on one project instead of "All projects".
+    if (data.defaultProject && data.projects.indexOf(data.defaultProject) !== -1) {
+      filterSelect.value = data.defaultProject;
+    }
   }
 
   filterSelect.addEventListener('change', render);

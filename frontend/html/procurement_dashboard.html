@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard — Carl's Angels Inventory Management</title>
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<link rel="stylesheet" href="../css/procurement-dashboard.css">
+</head>
+<body>
+
+<div class="cai-app">
+  <div id="cai-topbar-slot"></div>
+
+  <div class="cai-body">
+    <div id="cai-sidebar-slot"></div>
+
+    <main class="cai-content">
+
+      <div class="dash-welcome">
+        <p class="dash-welcome__title">Welcome back, Nestlee Gier</p>
+        <h1 class="dash-section-title">All notifications</h1>
+      </div>
+
+      <!-- ---- Notifications ---- -->
+      <div class="dash-card dash-card--full">
+        <div class="dash-table-scroll pd-scroll">
+          <table class="dash-table pd-notifications">
+            <thead>
+              <tr>
+                <th><span class="pd-sr-only">Type</span></th>
+                <th>Source</th>
+                <th>Notification</th>
+                <th>Status</th>
+                <th><span class="pd-sr-only">Actions</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="dash-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 7.5l-9-5-9 5v9l9 5 9-5v-9zM12 4.6l5.9 3.3L12 11.2 6.1 7.9 12 4.6zM5 9.6l6 3.3v6.6l-6-3.3V9.6zm8 9.9v-6.6l6-3.3v6.6l-6 3.3z"/></svg></span></td>
+                <td>Material</td>
+                <td>Low Stock</td>
+                <td><span class="cai-badge cai-badge--negative">Urgent</span></td>
+                <td><button class="cai-btn cai-btn--outline" type="button">View Details</button></td>
+              </tr>
+              <tr>
+                <td><span class="dash-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 7.5l-9-5-9 5v9l9 5 9-5v-9zM12 4.6l5.9 3.3L12 11.2 6.1 7.9 12 4.6zM5 9.6l6 3.3v6.6l-6-3.3V9.6zm8 9.9v-6.6l6-3.3v6.6l-6 3.3z"/></svg></span></td>
+                <td>Material</td>
+                <td>Material Request</td>
+                <td><span class="cai-badge cai-badge--negative">Unopened</span></td>
+                <td><button class="cai-btn cai-btn--outline" type="button">View Details</button></td>
+              </tr>
+              <tr>
+                <td><span class="dash-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 7.5l-9-5-9 5v9l9 5 9-5v-9zM12 4.6l5.9 3.3L12 11.2 6.1 7.9 12 4.6zM5 9.6l6 3.3v6.6l-6-3.3V9.6zm8 9.9v-6.6l6-3.3v6.6l-6 3.3z"/></svg></span></td>
+                <td>Material</td>
+                <td>Low Stock</td>
+                <td><span class="cai-badge cai-badge--default">Not Urgent</span></td>
+                <td><button class="cai-btn cai-btn--outline" type="button">View Details</button></td>
+              </tr>
+              <tr>
+                <td><span class="dash-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 7.5l-9-5-9 5v9l9 5 9-5v-9zM12 4.6l5.9 3.3L12 11.2 6.1 7.9 12 4.6zM5 9.6l6 3.3v6.6l-6-3.3V9.6zm8 9.9v-6.6l6-3.3v6.6l-6 3.3z"/></svg></span></td>
+                <td>Material</td>
+                <td>Material Request</td>
+                <td><span class="cai-badge cai-badge--default">Opened</span></td>
+                <td><button class="cai-btn cai-btn--outline" type="button">View Details</button></td>
+              </tr>
+              <tr>
+                <td><span class="dash-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 7.5l-9-5-9 5v9l9 5 9-5v-9zM12 4.6l5.9 3.3L12 11.2 6.1 7.9 12 4.6zM5 9.6l6 3.3v6.6l-6-3.3V9.6zm8 9.9v-6.6l6-3.3v6.6l-6 3.3z"/></svg></span></td>
+                <td>Material</td>
+                <td>Material Request</td>
+                <td><span class="cai-badge cai-badge--positive">Approved</span></td>
+                <td><button class="cai-btn cai-btn--outline" type="button">View Details</button></td>
+              </tr>
+              <tr>
+                <td><span class="dash-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg></span></td>
+                <td>Order</td>
+                <td>Incoming delivery</td>
+                <td><span class="cai-badge cai-badge--default">In transit</span></td>
+                <td><button class="cai-btn cai-btn--outline" type="button">View Details</button></td>
+              </tr>
+              <tr>
+                <td><span class="dash-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></span></td>
+                <td>Project</td>
+                <td>Change Order</td>
+                <td><span class="cai-badge cai-badge--negative">Urgent</span></td>
+                <td><button class="cai-btn cai-btn--outline" type="button">View Details</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ---- Shortages + Sync Status ---- -->
+      <div class="dash-row">
+        <section class="dash-card pd-card--shortages" aria-labelledby="pd-shortages-title">
+          <h2 class="dash-card__title" id="pd-shortages-title">Shortages</h2>
+          <table class="dash-table">
+            <thead>
+              <tr><th>Material Name</th><th>On-hand Stock</th><th>Needed Stock</th><th>Site</th><th>Date</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Cement</td>
+                <td>30</td>
+                <td>100</td>
+                <td>Site A</td>
+                <td>01/10/2026</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="dash-card pd-card--sync" aria-labelledby="pd-sync-title">
+          <div class="pd-card-head">
+            <h2 class="dash-card__title" id="pd-sync-title">Sync Status</h2>
+            <span class="cai-badge cai-badge--positive">Online</span>
+          </div>
+          <table class="dash-table">
+            <thead>
+              <tr><th>Inventory count date</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>11/26/2026 5:00 PM</td>
+                <td><span class="cai-badge cai-badge--positive">Synced</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+
+      <!-- ---- Material Requests ---- -->
+      <section class="dash-card dash-card--full" aria-labelledby="pd-mr-title">
+        <div class="pd-card-head">
+          <h2 class="dash-card__title" id="pd-mr-title">Material Requests</h2>
+          <div class="pd-toggle" role="group" aria-label="Filter material requests">
+            <button class="cai-btn cai-btn--primary" type="button" id="pd-mr-pending-btn" aria-pressed="true">Pending Material Requests</button>
+            <button class="cai-btn cai-btn--outline" type="button" id="pd-mr-approved-btn" aria-pressed="false">Approved Material Requests</button>
+          </div>
+        </div>
+        <table class="dash-table">
+          <thead>
+            <tr><th>Material Request</th><th>Quantity</th><th>Site</th><th>Date</th></tr>
+          </thead>
+          <tbody id="pd-mr-pending">
+            <tr>
+              <td>Cement</td>
+              <td>30</td>
+              <td>Site A</td>
+              <td>01/10/2026</td>
+            </tr>
+          </tbody>
+          <!-- Sample data: replace with real approved requests. -->
+          <tbody id="pd-mr-approved" hidden>
+            <tr>
+              <td>Rebar 16 mm</td>
+              <td>120</td>
+              <td>Site B</td>
+              <td>01/08/2026</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ---- Supplier Orders ---- -->
+      <section class="dash-card dash-card--full" aria-labelledby="pd-so-title">
+        <h2 class="dash-card__title" id="pd-so-title">Supplier Orders</h2>
+        <table class="dash-table">
+          <thead>
+            <tr><th>Order ID</th><th>Supplier</th><th>Location/Project</th><th>Status</th><th><span class="pd-sr-only">Actions</span></th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>123 Hardware</td>
+              <td>Office Renovation</td>
+              <td>Draft</td>
+              <td><button class="cai-btn cai-btn--outline" type="button">View Details</button></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>456 MAMAMA</td>
+              <td>Office Renovation</td>
+              <td>Sent</td>
+              <td><button class="cai-btn cai-btn--outline" type="button">View Details</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ---- Deliveries ---- -->
+      <section class="dash-card dash-card--full" aria-labelledby="pd-del-title">
+        <h2 class="dash-card__title" id="pd-del-title">Deliveries</h2>
+        <table class="dash-table">
+          <thead>
+            <tr><th>Order ID</th><th>Supplier</th><th>Location/Project</th><th>Date Ordered</th><th>Date Arrived</th><th>Status</th><th><span class="pd-sr-only">Actions</span></th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>123 Hardware</td>
+              <td>Office Renovation</td>
+              <td>11-24-2026</td>
+              <td>11-26-2026</td>
+              <td><span class="cai-badge cai-badge--positive">Received</span></td>
+              <td><button class="cai-btn cai-btn--outline" type="button">View Details</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<script src="../js/layout.js"></script>
+<script src="../js/procurement-dashboard.js"></script>
+</body>
+</html>
