@@ -53,9 +53,13 @@
   /*  Project filter                                                          */
   /* ---------------------------------------------------------------------- */
 
+  // Optional: the foreman page has no filter (a foreman only sees their own
+  // project), so it sets data.fixedProject instead.
   var filterSelect = $('inv-project-filter');
+  var CAN_REQUEST = !!data.canRequest;   // adds a "Request" button per row
 
   function buildFilter() {
+    if (!filterSelect) return;
     filterSelect.textContent = '';
     filterSelect.appendChild(el('option', { value: '', text: 'All projects' }));
     data.projects.forEach(function (p) {
@@ -67,7 +71,7 @@
     }
   }
 
-  filterSelect.addEventListener('change', render);
+  if (filterSelect) filterSelect.addEventListener('change', render);
 
   /* ---------------------------------------------------------------------- */
   /*  Table + stat cards                                                      */
@@ -84,7 +88,7 @@
   }
 
   function render() {
-    var activeProject = filterSelect.value;
+    var activeProject = filterSelect ? filterSelect.value : (data.fixedProject || '');
     var visible = data.items.filter(function (item) {
       return !activeProject || item.project === activeProject;
     });
@@ -98,20 +102,24 @@
       if (s === 'low') low += 1;
       if (s === 'unavailable') unavailable += 1;
 
-      var tr = el('tr', { className: s ? 'inv-row--' + s : '' }, [
+      var cells = [
         el('td', { text: item.material }),
         el('td', { text: item.location }),
         el('td', { text: fmt(item.quantity) }),
         el('td', { text: item.unit }),
         el('td', { text: fmt(item.used) }),
         el('td', null, [usedCell(item)])
-      ]);
-      tbody.appendChild(tr);
+      ];
+      if (CAN_REQUEST) {
+        var btn = el('button', { type: 'button', className: 'cai-btn inv-request-btn', 'data-material': item.material, text: 'Request' });
+        cells.push(el('td', null, [btn]));
+      }
+      tbody.appendChild(el('tr', { className: s ? 'inv-row--' + s : '' }, cells));
     });
 
     if (!visible.length) {
       tbody.appendChild(el('tr', null, [
-        el('td', { colspan: '6', text: 'No materials tracked for this project yet.' })
+        el('td', { colspan: CAN_REQUEST ? '7' : '6', text: 'No materials tracked for this project yet.' })
       ]));
     }
 

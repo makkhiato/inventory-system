@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard — Carl's Angels Inventory Management</title>
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<link rel="stylesheet" href="../css/foreman-dashboard.css">
+</head>
+<body>
+
+<div class="cai-app">
+  <div id="cai-topbar-slot"></div>
+
+  <div class="cai-body">
+    <div id="cai-sidebar-slot"></div>
+
+    <main class="cai-content">
+
+      <!-- Prototype only: every list below is hardcoded sample data. -->
+
+      <div class="dash-welcome">
+        <p class="dash-welcome__title">Welcome back, Carl Dela Cruz</p>
+        <h1 class="dash-section-title">All notifications</h1>
+      </div>
+
+      <!-- ---- Notifications ---- -->
+      <div class="dash-card dash-card--full">
+        <div class="dash-table-scroll fd-scroll">
+          <table class="dash-table fd-notifications">
+            <thead>
+              <tr>
+                <th>Source</th>
+                <th>Notification</th>
+                <th>Status</th>
+                <th><span class="fd-sr-only">Actions</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Material</td>
+                <td>Low Stock</td>
+                <td><span class="cai-badge cai-badge--negative">Urgent</span></td>
+                <td><button class="cai-btn cai-btn--outline" type="button">View Details</button></td>
+              </tr>
+              <tr>
+                <td>Material</td>
+                <td>Material Request</td>
+                <td><span class="cai-badge cai-badge--negative">Unopened</span></td>
+                <td><button class="cai-btn cai-btn--outline" type="button">View Details</button></td>
+              </tr>
+              <tr>
+                <td>Material</td>
+                <td>Low Stock</td>
+                <td><span class="cai-badge cai-badge--default">Not Urgent</span></td>
+                <td><button class="cai-btn cai-btn--outline" type="button">View Details</button></td>
+              </tr>
+              <tr>
+                <td>Material</td>
+                <td>Material Request</td>
+                <td><span class="cai-badge cai-badge--default">Opened</span></td>
+                <td><button class="cai-btn cai-btn--outline" type="button">View Details</button></td>
+              </tr>
+              <tr>
+                <td>Material</td>
+                <td>Material Request</td>
+                <td><span class="cai-badge cai-badge--positive">Approved</span></td>
+                <td><button class="cai-btn cai-btn--outline" type="button">View Details</button></td>
+              </tr>
+              <tr>
+                <td>Order</td>
+                <td>Incoming delivery</td>
+                <td><span class="cai-badge cai-badge--default">In transit</span></td>
+                <td><button class="cai-btn cai-btn--outline" type="button">View Details</button></td>
+              </tr>
+              <tr>
+                <td>Project</td>
+                <td>Change Order</td>
+                <td><span class="cai-badge cai-badge--negative">Urgent</span></td>
+                <td><button class="cai-btn cai-btn--outline" type="button">View Details</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ---- Recent Activities + Sync Status ---- -->
+      <div class="dash-row">
+        <section class="dash-card fd-card--activities" aria-labelledby="fd-activities-title">
+          <h2 class="dash-card__title" id="fd-activities-title">Recent Activities</h2>
+          <table class="dash-table">
+            <thead>
+              <tr><th>Activity</th><th>Date and Time</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Inventory count</td>
+                <td>11/26/2026 5:00 PM</td>
+              </tr>
+              <tr>
+                <td>Material requested</td>
+                <td>11/26/2026 2:15 PM</td>
+              </tr>
+              <tr>
+                <td>Goal completion</td>
+                <td>11/25/2026 4:40 PM</td>
+              </tr>
+              <tr>
+                <td>Delivery arrived</td>
+                <td>11/24/2026 9:30 AM</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="dash-card fd-card--sync" aria-labelledby="fd-sync-title">
+          <div class="fd-card-head">
+            <h2 class="dash-card__title" id="fd-sync-title">Sync Status</h2>
+            <span class="cai-badge cai-badge--positive">Online</span>
+          </div>
+          <table class="dash-table">
+            <thead>
+              <tr><th>Inventory count date</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>11/26/2026 5:00 PM</td>
+                <td><span class="cai-badge cai-badge--positive">Synced</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+
+      <!-- ---- Progress Per Goal ---- -->
+      <section class="dash-card dash-card--full" aria-labelledby="fd-goals-title">
+        <h2 class="dash-card__title" id="fd-goals-title">Progress Per Goal</h2>
+        <table class="dash-table fd-goals">
+          <thead>
+            <tr><th>Goal</th><th>Total Progress</th><th>Status</th><th>Target Finish</th><th><span class="fd-sr-only">Actions</span></th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Goal 1</td>
+              <td><div class="cai-progress"><div class="cai-progress__fill" style="width:55%"></div></div></td>
+              <td><span class="cai-badge cai-badge--positive">Ahead</span></td>
+              <td>01/22/2027</td>
+              <td><button class="cai-btn cai-btn--outline" type="button">View</button></td>
+            </tr>
+            <tr>
+              <td>Goal 2</td>
+              <td><div class="cai-progress"><div class="cai-progress__fill" style="width:15%"></div></div></td>
+              <td><span class="cai-badge cai-badge--negative">Behind</span></td>
+              <td>05/02/2027</td>
+              <td><button class="cai-btn cai-btn--outline" type="button">View</button></td>
+            </tr>
+            <tr>
+              <td>Goal 3</td>
+              <td><div class="cai-progress"><div class="cai-progress__fill" style="width:85%"></div></div></td>
+              <td><span class="cai-badge cai-badge--neutral">On Track</span></td>
+              <td>06/12/2027</td>
+              <td><button class="cai-btn cai-btn--outline" type="button">View</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<script src="../js/layout.js"></script>
+</body>
+</html>

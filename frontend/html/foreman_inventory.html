@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inventory — Carl's Angels Inventory Management</title>
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/projects.css">
+<link rel="stylesheet" href="../css/boq.css">
+<link rel="stylesheet" href="../css/inventory.css">
+</head>
+<body>
+
+<div class="cai-app">
+  <div id="cai-topbar-slot"></div>
+
+  <div class="cai-body">
+    <div id="cai-sidebar-slot"></div>
+
+    <main class="cai-content">
+
+      <div class="proj-topline">
+        <nav class="proj-breadcrumb" aria-label="Breadcrumb">
+          <span>Operations</span>
+          <span aria-hidden="true"> &gt; </span>
+          <span class="proj-breadcrumb__current" aria-current="page">Inventory</span>
+        </nav>
+      </div>
+
+      <div class="inv-toolbar">
+        <h1 class="inv-title">Inventory</h1>
+
+        <div class="inv-stats">
+          <div class="inv-stat">
+            <p class="inv-stat__label">Location Status</p>
+            <span class="inv-stat__pill" id="inv-location-status">Not Full</span>
+          </div>
+          <div class="inv-stat">
+            <p class="inv-stat__label">Low-stock</p>
+            <p class="inv-stat__value" id="inv-stat-low">0</p>
+          </div>
+          <div class="inv-stat">
+            <p class="inv-stat__label">Unavailable</p>
+            <p class="inv-stat__value" id="inv-stat-unavailable">0</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-tabs" role="group" aria-label="Inventory sections">
+        <a class="proj-tabs__tab proj-tabs__tab--active" href="foreman_inventory.html" aria-current="page">Inventory</a>
+        <a class="proj-tabs__tab" href="foreman_inventory-tools.html">Tools</a>
+      </div>
+
+      <section class="proj-card" aria-label="Inventory items">
+        <div class="proj-table-scroll">
+          <table class="proj-table inv-table">
+            <thead>
+              <tr>
+                <th>Materials</th>
+                <th>Location</th>
+                <th>Quantity</th>
+                <th>Unit</th>
+                <th>Quantity Used</th>
+                <th>Used</th>
+                <th><span class="sr-only">Request</span></th>
+              </tr>
+            </thead>
+            <tbody id="inv-rows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <dialog class="inv-dialog" id="inv-request-dialog" aria-labelledby="inv-request-title">
+        <form id="inv-request-form">
+          <h2 id="inv-request-title">Request material</h2>
+          <label for="inv-request-qty">Quantity needed (<span id="inv-request-unit"></span>)</label>
+          <input class="boq-input" id="inv-request-qty" type="number" min="1" step="any" required>
+          <label for="inv-request-note">Note (optional)</label>
+          <input class="boq-input" id="inv-request-note" type="text" autocomplete="off">
+          <div class="inv-dialog__actions">
+            <button type="button" class="cai-btn cai-btn--outline" id="inv-request-cancel">Cancel</button>
+            <button type="submit" class="cai-btn cai-btn--primary">Send request</button>
+          </div>
+        </form>
+      </dialog>
+
+    </main>
+  </div>
+</div>
+
+<script>
+// Hardcoded sample data (prototype only). Nothing is persisted.
+// A foreman only sees the project they are assigned to (fixedProject).
+// locationCapacityUsed is the % of the storage location that is occupied;
+// the Location Status card reads "Full" at 100.
+window.CAI_INVENTORY = {
+  canRequest: true,
+  fixedProject: 'Office Renovation - Makati',
+  locationCapacityUsed: 72,
+  reorderThreshold: 0.15,   // remaining stock at or below 15% of quantity counts as low-stock
+
+  items: [
+    { material: 'Cement', project: 'Office Renovation - Makati', location: 'Site A', quantity: 100, unit: 'sack', used: 45 },
+    { material: 'Rebar #10', project: 'Office Renovation - Makati', location: 'Site A', quantity: 300, unit: 'pc', used: 120 },
+    { material: 'Plywood sheets', project: 'Office Renovation - Makati', location: 'Site A', quantity: 60, unit: 'pc', used: 54 },
+    { material: 'Sand', project: 'Office Renovation - Makati', location: 'Site A', quantity: 40, unit: 'cu.m', used: 40 }
+  ]
+};
+</script>
+<script src="../js/layout.js"></script>
+<script src="../js/inventory.js"></script>
+<script src="../js/foreman-inventory.js"></script>
+</body>
+</html>

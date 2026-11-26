@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tools — Carl's Angels Inventory Management</title>
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/projects.css">
+<link rel="stylesheet" href="../css/boq.css">
+<link rel="stylesheet" href="../css/inventory.css">
+<link rel="stylesheet" href="../css/tools.css">
+</head>
+<body>
+
+<div class="cai-app">
+  <div id="cai-topbar-slot"></div>
+
+  <div class="cai-body">
+    <div id="cai-sidebar-slot"></div>
+
+    <main class="cai-content">
+
+      <div class="proj-topline">
+        <nav class="proj-breadcrumb" aria-label="Breadcrumb">
+          <span>Operations</span>
+          <span aria-hidden="true"> &gt; </span>
+          <span class="proj-breadcrumb__current" aria-current="page">Inventory</span>
+        </nav>
+      </div>
+
+      <div class="inv-toolbar">
+        <h1 class="inv-title">Inventory</h1>
+      </div>
+
+      <div class="proj-tabs" role="group" aria-label="Inventory sections">
+        <a class="proj-tabs__tab" href="foreman_inventory.html">Inventory</a>
+        <a class="proj-tabs__tab proj-tabs__tab--active" href="foreman_inventory-tools.html" aria-current="page">Tools</a>
+      </div>
+
+      <section class="proj-card" aria-label="Tools and equipment">
+        <div class="proj-table-scroll">
+          <table class="proj-table tools-table foreman-tools-table">
+            <thead>
+              <tr>
+                <th>Tool Name</th>
+                <th>Location</th>
+                <th>Status</th>
+                <th><span class="sr-only">Action</span></th>
+              </tr>
+            </thead>
+            <tbody id="tools-rows"></tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<script>
+// Hardcoded sample data (prototype only). Nothing is persisted.
+// A foreman only sees tools for their assigned project (fixedProject).
+// heldByMe marks a tool currently checked out to this foreman, which is
+// what lets them Return it; any Available tool can be Requested.
+window.CAI_TOOLS = {
+  fixedProject: 'Office Renovation - Makati',
+  items: [
+    { tool: 'Concrete Mixer', project: 'Office Renovation - Makati', location: 'Site A Storage', status: 'In Use', heldByMe: true },
+    { tool: 'Scaffolding Set', project: 'Office Renovation - Makati', location: 'Site A Storage', status: 'Available', heldByMe: false },
+    { tool: 'Power Drill', project: 'Office Renovation - Makati', location: 'Site A Storage', status: 'In Use', heldByMe: false },
+    { tool: 'Jackhammer', project: 'Office Renovation - Makati', location: 'Site A Storage', status: 'Under Repair', heldByMe: false }
+  ]
+};
+</script>
+<script src="../js/layout.js"></script>
+<script src="../js/foreman-tools.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+/* ==========================================================================
+   Foreman Dashboard — page-specific styles (foreman_dashboard.html).
+   Also link dashboard.css (cards, tables, welcome heading) and
+   components.css (buttons, badges, progress bar).
+   ========================================================================== */
+
+/* Recent Activities is the wider card, Sync Status the narrower one. */
+.fd-card--activities { flex: 1.7; min-width: 0; }
+.fd-card--sync { flex: 1; min-width: 0; }
+
+/* Card title on the left, a badge on the right. */
+.fd-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-bottom: 12px;
+}
+.fd-card-head .dash-card__title { margin: 0; }
+
+/* Notifications: fixed column widths so Source, Notification and Status line up
+   under their headers; Actions takes the rest and sits flush right. */
+.dash-table-scroll.fd-scroll { max-height: 260px; }
+.fd-notifications { table-layout: fixed; }
+.fd-notifications th:nth-child(1) { width: 18%; }
+.fd-notifications th:nth-child(2) { width: 32%; }
+.fd-notifications th:nth-child(3) { width: 30%; }
+
+/* Goals table: give the progress bar a sensible width in its column. */
+.fd-goals .cai-progress { min-width: 120px; }
+
+/* Header text kept for screen readers where the mockup shows no label. */
+.fd-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Action buttons sit flush right in their column. */
+.dash-table td:last-child:has(.cai-btn) { text-align: right; }
+.dash-table .cai-btn:focus-visible { outline: 2px solid var(--cai-black); outline-offset: 2px; }
+
+@media (max-width: 900px) {
+  .dash-row { flex-direction: column; }
+}

@@ -80,3 +80,12 @@
 @media (max-width: 900px) {
   .tools-toolbar { flex-direction: column; align-items: flex-start; }
 }
+
+/* ---- foreman tools tab: plain-text status + action column ---- */
+
+.foreman-tool-status { font-weight: bold; }
+.foreman-tool-status.tools-status--available,
+.foreman-tool-status.tools-status--inuse,
+.foreman-tool-status.tools-status--repair { border: 0; }
+.foreman-tools-table { min-width: 560px; }
+.foreman-tools-table td:last-child { text-align: right; }
