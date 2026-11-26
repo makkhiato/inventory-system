@@ -1,0 +1,49 @@
+/* ==========================================================================
+   Storage Dashboard — page-specific styles (storage_dashboard.html).
+   Also link dashboard.css (cards, tables, welcome heading) and
+   components.css (buttons, badges).
+   ========================================================================== */
+
+/* Inventory summary is the wider card, Sync Status the narrower one. */
+.sd-card--summary { flex: 1.7; min-width: 0; }
+.sd-card--sync { flex: 1; min-width: 0; }
+
+/* Card title on the left, a badge on the right. */
+.sd-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-bottom: 12px;
+}
+.sd-card-head .dash-card__title { margin: 0; }
+
+/* Notifications: fixed column widths so Source, Notification and Status line up
+   under their headers; Actions takes the rest and sits flush right. */
+.sd-notifications { table-layout: fixed; }
+.sd-notifications th:nth-child(1) { width: 18%; }
+.sd-notifications th:nth-child(2) { width: 32%; }
+.sd-notifications th:nth-child(3) { width: 30%; }
+.dash-table-scroll.sd-scroll { max-height: 260px; }
+
+/* Tall enough that an empty list still looks like a card, as in the mockup. */
+.sd-card--list { min-height: 200px; }
+
+/* Header text kept for screen readers where the mockup shows no label. */
+.sd-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Action buttons sit flush right in their column. */
+.dash-table td:last-child:has(.cai-btn) { text-align: right; }
+.dash-table .cai-btn:focus-visible { outline: 2px solid var(--cai-black); outline-offset: 2px; }
+
+@media (max-width: 900px) {
+  .dash-row { flex-direction: column; }
+}

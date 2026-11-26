@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard — Carl's Angels Inventory Management</title>
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<link rel="stylesheet" href="../css/storage-dashboard.css">
+</head>
+<body>
+
+<div class="cai-app">
+  <div id="cai-topbar-slot"></div>
+
+  <div class="cai-body">
+    <div id="cai-sidebar-slot"></div>
+
+    <main class="cai-content">
+
+      <!-- Prototype only: every list below is hardcoded sample data. -->
+
+      <div class="dash-welcome">
+        <p class="dash-welcome__title">Welcome back, Nestlee Gier</p>
+        <h1 class="dash-section-title">All notifications</h1>
+      </div>
+
+      <!-- ---- Notifications ---- -->
+      <div class="dash-card dash-card--full">
+        <div class="dash-table-scroll sd-scroll">
+          <table class="dash-table sd-notifications">
+            <thead>
+              <tr>
+                <th>Source</th>
+                <th>Notification</th>
+                <th>Status</th>
+                <th><span class="sd-sr-only">Actions</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Material</td>
+                <td>Low Stock</td>
+                <td><span class="cai-badge cai-badge--negative">Urgent</span></td>
+                <td><button class="cai-btn cai-btn--outline" type="button">View Details</button></td>
+              </tr>
+              <tr>
+                <td>Material</td>
+                <td>Material Request</td>
+                <td><span class="cai-badge cai-badge--negative">Unopened</span></td>
+                <td><button class="cai-btn cai-btn--outline" type="button">View Details</button></td>
+              </tr>
+              <tr>
+                <td>Material</td>
+                <td>Low Stock</td>
+                <td><span class="cai-badge cai-badge--default">Not Urgent</span></td>
+                <td><button class="cai-btn cai-btn--outline" type="button">View Details</button></td>
+              </tr>
+              <tr>
+                <td>Material</td>
+                <td>Material Request</td>
+                <td><span class="cai-badge cai-badge--default">Opened</span></td>
+                <td><button class="cai-btn cai-btn--outline" type="button">View Details</button></td>
+              </tr>
+              <tr>
+                <td>Material</td>
+                <td>Material Request</td>
+                <td><span class="cai-badge cai-badge--positive">Approved</span></td>
+                <td><button class="cai-btn cai-btn--outline" type="button">View Details</button></td>
+              </tr>
+              <tr>
+                <td>Order</td>
+                <td>Incoming delivery</td>
+                <td><span class="cai-badge cai-badge--default">In transit</span></td>
+                <td><button class="cai-btn cai-btn--outline" type="button">View Details</button></td>
+              </tr>
+              <tr>
+                <td>Tool</td>
+                <td>Tool Status</td>
+                <td><span class="cai-badge cai-badge--negative">Urgent</span></td>
+                <td><button class="cai-btn cai-btn--outline" type="button">View Details</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ---- Inventory summary + Sync Status ---- -->
+      <div class="dash-row">
+        <section class="dash-card sd-card--summary" aria-labelledby="sd-summary-title">
+          <h2 class="dash-card__title" id="sd-summary-title">Storage Yard Inventory Summary</h2>
+          <table class="dash-table">
+            <thead>
+              <tr><th>Material</th><th>On-hand Stock</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Cement</td>
+                <td>100</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="dash-card sd-card--sync" aria-labelledby="sd-sync-title">
+          <div class="sd-card-head">
+            <h2 class="dash-card__title" id="sd-sync-title">Sync Status</h2>
+            <span class="cai-badge cai-badge--positive">Online</span>
+          </div>
+          <table class="dash-table">
+            <thead>
+              <tr><th>Inventory count date</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>11/26/2026 5:00 PM</td>
+                <td><span class="cai-badge cai-badge--positive">Synced</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+
+      <!-- ---- Tool Status ---- -->
+      <section class="dash-card dash-card--full sd-card--list" aria-labelledby="sd-tools-title">
+        <h2 class="dash-card__title" id="sd-tools-title">Tool Status</h2>
+        <table class="dash-table">
+          <thead>
+            <tr><th>Order ID</th><th>Supplier</th><th>Location/Project</th><th>Date Ordered</th><th>Date Arrived</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>123 Hardware</td>
+              <td>Office Renovation</td>
+              <td>11-24-2026</td>
+              <td>11-26-2026</td>
+              <td>Not received</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ---- Low-stock ---- -->
+      <section class="dash-card dash-card--full sd-card--list" aria-labelledby="sd-low-title">
+        <h2 class="dash-card__title" id="sd-low-title">Low-stock</h2>
+        <table class="dash-table">
+          <thead>
+            <tr><th>Order ID</th><th>Supplier</th><th>Location/Project</th><th>Date Ordered</th><th>Date Arrived</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>123 Hardware</td>
+              <td>Office Renovation</td>
+              <td>11-24-2026</td>
+              <td>11-26-2026</td>
+              <td>Not received</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ---- Deliveries ---- -->
+      <section class="dash-card dash-card--full sd-card--list" aria-labelledby="sd-del-title">
+        <h2 class="dash-card__title" id="sd-del-title">Deliveries</h2>
+        <table class="dash-table">
+          <thead>
+            <tr><th>Order ID</th><th>Supplier</th><th>Location/Project</th><th>Date Ordered</th><th>Date Arrived</th><th>Status</th><th><span class="sd-sr-only">Actions</span></th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>123 Hardware</td>
+              <td>Office Renovation</td>
+              <td>11-24-2026</td>
+              <td>11-26-2026</td>
+              <td><span class="cai-badge cai-badge--positive">Received</span></td>
+              <td><button class="cai-btn cai-btn--outline" type="button">View Details</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ---- Pending Receipts ---- -->
+      <section class="dash-card dash-card--full sd-card--list" aria-labelledby="sd-pending-title">
+        <h2 class="dash-card__title" id="sd-pending-title">Pending Receipts</h2>
+        <table class="dash-table">
+          <thead>
+            <tr><th>Order ID</th><th>Supplier</th><th>Location/Project</th><th>Date Ordered</th><th>Date Arrived</th><th>Status</th><th><span class="sd-sr-only">Actions</span></th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>123 Hardware</td>
+              <td>Office Renovation</td>
+              <td>11-24-2026</td>
+              <td>11-26-2026</td>
+              <td><span class="cai-badge cai-badge--positive">Received</span></td>
+              <td><button class="cai-btn cai-btn--outline" type="button">View Details</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ---- Physical Count Reminders ---- -->
+      <section class="dash-card dash-card--full sd-card--list" aria-labelledby="sd-count-title">
+        <h2 class="dash-card__title" id="sd-count-title">Physical Count Reminders</h2>
+        <table class="dash-table">
+          <thead>
+            <tr><th>Order ID</th><th>Supplier</th><th>Location/Project</th><th>Date Ordered</th><th>Date Arrived</th><th>Status</th><th><span class="sd-sr-only">Actions</span></th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>123 Hardware</td>
+              <td>Office Renovation</td>
+              <td>11-24-2026</td>
+              <td>11-26-2026</td>
+              <td><span class="cai-badge cai-badge--positive">Received</span></td>
+              <td><button class="cai-btn cai-btn--outline" type="button">View Details</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<script src="../js/layout.js"></script>
+</body>
+</html>
